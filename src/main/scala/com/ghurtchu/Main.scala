@@ -154,10 +154,7 @@ object Main extends IOApp.Simple {
       (
         (json \ "login").asOpt[String],
         (json \ "contributions").asOpt[Long]
-      ).tupled
-        .fold[JsResult[Contributor]](JsError("parse failure")) { (login, contributions) =>
-          JsSuccess(Contributor(login, contributions))
-        }
+      ).tupled.fold(JsError("parse failure")) { (lo, co) => JsSuccess(Contributor(lo, co)) }
     given WritesContributor: Writes[Contributor] = Json.writes[Contributor]
 
     final case class Contributions(count: Long, contributors: Vector[Contributor])

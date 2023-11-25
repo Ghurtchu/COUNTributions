@@ -75,7 +75,7 @@ object Main extends IOApp.Simple {
                 .onError(e => IO.println(s"error during part 1: $e"))
               // for each page you get 100 repos, for Google it's 2560 =>
               pages = (1 to (publicRepos / 100) + 1).toVector // 26 parallel HTTP requests: => (2560 / 100) + 1 = 25 + 1 = 26
-              repositories <- pages.parFlatTraverse { page =>
+              repositories <- pages.parUnorderedFlatTraverse { page =>
                   IO.fromEither(uri(reposUrl(orgName, page)))
                     .flatMap { reposUri =>
                       client

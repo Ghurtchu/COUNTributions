@@ -4,7 +4,15 @@ Parallelism is a piece of cake when programs are expressions which can be compos
 
 The app aggregates all the contributors for a certain GitHub organization and sorts them by their contributions.
 
-Parallelism is only limited by the restrictions GitHub REST API.
+Flow:
+- parse the number of public repos from - https://api.github.com/orgs/typelevel, e.g `public_repos` = 2560
+- based on number issue `N` amount of parallel requests to get the `names` of public repos from - https://api.github.com/orgs/typelevel/repos?per_page=100&page=1
+  - `N` = (1 to (`public_repos` / 100) + 1).toVector => `26`
+- once we have all names we issue 2560 parallel requests and exhaust them iteratively until we get all paginated contributors from: https://api.github.com/repos/typelevel/cats/contributors?per_page=100&page=1
+
+As you can see the parallelism is only limited by the restrictions GitHub REST API.
+
+However since `cats-effect` Runtime works on `Fiber`-s, it's inexpensive to abuse them 😄
 
 You are welcome to improve the implementation.
 

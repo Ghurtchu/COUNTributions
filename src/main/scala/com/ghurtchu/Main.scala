@@ -43,20 +43,20 @@ object Main extends IOApp.Simple {
         .build
     } yield ()).useForever
 
-  private def publicReposUrl(orgName: String) = s"https://api.github.com/orgs/$orgName"
+  def publicReposUrl(orgName: String) = s"https://api.github.com/orgs/$orgName"
 
-  private def contributorsUrl(repoName: RepoName, orgName: String, page: Int): String =
+  def contributorsUrl(repoName: RepoName, orgName: String, page: Int): String =
     s"https://api.github.com/repos/$orgName/$repoName/contributors?per_page=100&page=$page"
 
-  private def repoPerPageUrl(orgName: String, page: Int): String =
+  def reposUrl(orgName: String, page: Int): String =
     s"https://api.github.com/orgs/$orgName/repos?per_page=100&page=$page"
 
-  private def req(uri: Uri)(using token: Token) = Request[IO](Method.GET, uri)
+  def req(uri: Uri)(using token: Token) = Request[IO](Method.GET, uri)
     .putHeaders(Raw(CIString("Authorization"), s"Bearer $token"))
 
-  private def uri(url: String): Either[ParseFailure, Uri] = Uri.fromString(url)
+  def uri: String => Either[ParseFailure, Uri] = Uri.fromString
 
-  private def routes(client: Client[IO], token: Token): HttpRoutes[IO] = {
+  def routes(client: Client[IO], token: Token): HttpRoutes[IO] = {
     given tk: Token = token
     HttpRoutes.of[IO] {
 
@@ -74,20 +74,19 @@ object Main extends IOApp.Simple {
                 .map(_.into[PublicRepos])
                 .onError(e => IO.println(s"error during part 1: $e"))
               // for each page you get 100 repos, for Google it's 2560 =>
-              nParRequests = (1 to (publicRepos / 100) + 1).toVector // 26 parallel HTTP requests: => (2560 / 100) + 1 = 25 + 1 = 26
-              repositories <- nParRequests.parFlatTraverse {
-                pageNumber =>
-                  IO.fromEither(uri(repoPerPageUrl(orgName, pageNumber)))
-                    .flatMap { repoPerPageUri =>
+              pages = (1 to (publicRepos / 100) + 1).toVector // 26 parallel HTTP requests: => (2560 / 100) + 1 = 25 + 1 = 26
+              repositories <- pages.parFlatTraverse { page =>
+                  IO.fromEither(uri(reposUrl(orgName, page)))
+                    .flatMap { reposUri =>
                       client
-                        .expect[String](req(repoPerPageUri))
+                        .expect[String](req(reposUri))
                         .map(_.into[Vector[RepoName]])
                         .onError(e => IO.println(s"error during part2: $e"))
                         .handleError(_ => Vector.empty)
                     }
               }
               contributors <- repositories // Vector of 2560 repos -> 2560 fibers
-                .parUnorderedFlatTraverse { (repo: RepoName) => // Vector[Vector[...]].flatten => Vector[...]
+                .parUnorderedFlatTraverse { repoName => // Vector[Vector[...]].flatten => Vector[...]
                   def getContributors(
                     page: Int,
                     contributors: Vector[Contributor],
@@ -96,7 +95,7 @@ object Main extends IOApp.Simple {
                     if ((page > 1 && contributors.size % 100 != 0) || isEmpty)
                       IO.pure(contributors)
                     else {
-                      val repoUrl = contributorsUrl(repo, orgName, page)
+                      val repoUrl = contributorsUrl(repoName, orgName, page)
                       // println(s"sending request to: $repoUrl")
                       IO.fromEither(uri(repoUrl))
                         .flatMap { repoUri =>

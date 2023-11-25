@@ -122,9 +122,8 @@ object Main extends IOApp.Simple {
                     .sortWith(_.contributions > _.contributions)
                 }
               end <- IO.realTime
-              _ <- info"${(start - end).toSeconds}" // measure how much time it took
-
               result <- Ok(Contributions(contributors.size, contributors).toJson)
+              _ <- info"${(start - end).toSeconds}" // measure how much time it took
             } yield result
           }
     }

@@ -1,4 +1,8 @@
-[debug] downloaded https://repo1.maven.org/maven2/org/scala-lang/modules/scala-parallel-collections_3/1.0.4/scala-parallel-collections_3-1.0.4.pom
-[debug] downloaded https://repo1.maven.org/maven2/org/scala-lang/modules/scala-parallel-collections_3/1.0.4/scala-parallel-collections_3-1.0.4.jar
-[debug] downloaded https://repo1.maven.org/maven2/org/scala-lang/modules/scala-parallel-collections_3/1.0.4/scala-parallel-collections_3-1.0.4-sources.jar
-[debug] downloaded https://repo1.maven.org/maven2/org/scala-lang/modules/scala-parallel-collections_3/1.0.4/scala-parallel-collections_3-1.0.4-javadoc.jar
+[debug] downloaded https://repo1.maven.org/maven2/com/typesafe/play/play-json_2.13/2.10.3/play-json_2.13-2.10.3.pom
+[debug] downloaded https://repo1.maven.org/maven2/com/typesafe/play/play-functional_2.13/2.10.3/play-functional_2.13-2.10.3.pom
+[debug] downloaded https://repo1.maven.org/maven2/com/typesafe/play/play-functional_2.13/2.10.3/play-functional_2.13-2.10.3.jar
+[debug] downloaded https://repo1.maven.org/maven2/com/typesafe/play/play-json_2.13/2.10.3/play-json_2.13-2.10.3.jar
+[debug] downloaded https://repo1.maven.org/maven2/com/typesafe/play/play-json_2.13/2.10.3/play-json_2.13-2.10.3-sources.jar
+[debug] downloaded https://repo1.maven.org/maven2/com/typesafe/play/play-functional_2.13/2.10.3/play-functional_2.13-2.10.3-sources.jar
+[debug] downloaded https://repo1.maven.org/maven2/com/typesafe/play/play-functional_2.13/2.10.3/play-functional_2.13-2.10.3-javadoc.jar
+[debug] downloaded https://repo1.maven.org/maven2/com/typesafe/play/play-json_2.13/2.10.3/play-json_2.13-2.10.3-javadoc.jar

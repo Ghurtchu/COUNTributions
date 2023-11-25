@@ -7,6 +7,7 @@
     <content url="file://$MODULE_DIR$/../..">
       <sourceFolder url="file://$MODULE_DIR$/../../src/main/scala" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../src/test/scala" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../src/main/resources" type="java-resource" />
       <excludeFolder url="file://$MODULE_DIR$/../../target" />
     </content>
     <orderEntry type="inheritedJdk" />
@@ -27,8 +28,6 @@
     <orderEntry type="library" name="sbt: com.typesafe.play:play-functional_3:2.10.3:jar" level="project" />
     <orderEntry type="library" name="sbt: com.typesafe.play:play-json_3:2.10.3:jar" level="project" />
     <orderEntry type="library" name="sbt: com.typesafe:config:1.4.2:jar" level="project" />
-    <orderEntry type="library" scope="TEST" name="sbt: junit:junit:4.13.2:jar" level="project" />
-    <orderEntry type="library" scope="TEST" name="sbt: org.hamcrest:hamcrest-core:1.3:jar" level="project" />
     <orderEntry type="library" name="sbt: org.http4s:http4s-client_3:0.23.23:jar" level="project" />
     <orderEntry type="library" name="sbt: org.http4s:http4s-core_3:0.23.23:jar" level="project" />
     <orderEntry type="library" name="sbt: org.http4s:http4s-crypto_3:0.2.4:jar" level="project" />
@@ -38,12 +37,8 @@
     <orderEntry type="library" name="sbt: org.http4s:http4s-ember-server_3:0.23.23:jar" level="project" />
     <orderEntry type="library" name="sbt: org.http4s:http4s-server_3:0.23.23:jar" level="project" />
     <orderEntry type="library" name="sbt: org.log4s:log4s_3:1.10.0:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.scala-lang.modules:scala-parallel-collections_3:1.0.4:jar" level="project" />
     <orderEntry type="library" name="sbt: org.scala-lang:scala-library:2.13.10:jar" level="project" />
     <orderEntry type="library" name="sbt: org.scala-lang:scala3-library_3:3.3.1:jar" level="project" />
-    <orderEntry type="library" scope="TEST" name="sbt: org.scala-sbt:test-interface:1.0:jar" level="project" />
-    <orderEntry type="library" scope="TEST" name="sbt: org.scalameta:junit-interface:0.7.29:jar" level="project" />
-    <orderEntry type="library" scope="TEST" name="sbt: org.scalameta:munit_3:0.7.29:jar" level="project" />
     <orderEntry type="library" name="sbt: org.scodec:scodec-bits_3:1.1.37:jar" level="project" />
     <orderEntry type="library" name="sbt: org.slf4j:slf4j-api:2.0.7:jar" level="project" />
     <orderEntry type="library" name="sbt: org.typelevel:case-insensitive_3:1.4.0:jar" level="project" />
@@ -57,7 +52,6 @@
     <orderEntry type="library" name="sbt: org.typelevel:literally_3:1.1.0:jar" level="project" />
     <orderEntry type="library" name="sbt: org.typelevel:log4cats-core_3:2.6.0:jar" level="project" />
     <orderEntry type="library" name="sbt: org.typelevel:log4cats-slf4j_3:2.6.0:jar" level="project" />
-    <orderEntry type="library" scope="TEST" name="sbt: org.typelevel:munit-cats-effect-3_3:1.0.7:jar" level="project" />
     <orderEntry type="library" name="sbt: org.typelevel:vault_3:3.5.0:jar" level="project" />
   </component>
 </module>

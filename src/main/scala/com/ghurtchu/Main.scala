@@ -151,13 +151,13 @@ object Main extends IOApp.Simple {
 
     final case class Contributor(login: String, contributions: Long)
     given ReadsContributor: Reads[Contributor] = json =>
-      for {
-        login <- (json \ "login")
-          .validate[String]
-        contributions <- (json \ "contributions")
-          .validateOpt[Long]
-          .map(_.getOrElse(0L))
-      } yield Contributor(login, contributions)
+      (
+        (json \ "login").asOpt[String],
+        (json \ "contributions").asOpt[Long]
+      ).tupled
+        .fold[JsResult[Contributor]](JsError("parse failure")) { (login, contributions) =>
+          JsSuccess(Contributor(login, contributions))
+        }
     given WritesContributor: Writes[Contributor] = Json.writes[Contributor]
 
     final case class Contributions(count: Long, contributors: Vector[Contributor])

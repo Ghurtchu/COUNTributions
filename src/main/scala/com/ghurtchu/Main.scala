@@ -73,6 +73,7 @@ object Main extends IOApp.Simple {
                 .expect[String](req(publicReposUri))
                 .map(_.into[PublicRepos])
                 .onError(e => IO.println(s"error during part 1: $e"))
+              _ = println(s"repos: $publicRepos")
               // for each page you get 100 repos, for Google it's 2560 =>
               pages = (1 to (publicRepos.value / 100) + 1).toVector // 26 parallel HTTP requests: => (2560 / 100) + 1 = 25 + 1 = 26
               repositories <- pages.parUnorderedFlatTraverse { page =>
@@ -121,6 +122,7 @@ object Main extends IOApp.Simple {
                     .sortWith(_.contributions > _.contributions)
                 }
               end <- IO.realTime
+              _ = println(contributors.size)
               result <- Ok(Contributions(contributors.size, contributors).toJson)
               _ <- info"${(start - end).toSeconds}" // measure how much time it took
             } yield result

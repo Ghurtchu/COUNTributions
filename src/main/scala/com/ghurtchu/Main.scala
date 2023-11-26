@@ -34,7 +34,6 @@ object Main extends IOApp.Simple {
     (for {
       _ <- info"starting server".toResource
       token <- IO.delay(ConfigSource.default.loadOrThrow[Token]).toResource
-      _ = println(token.token)
       client <- EmberClientBuilder.default[IO].build
       _ <- EmberServerBuilder
         .default[IO]
@@ -74,9 +73,8 @@ object Main extends IOApp.Simple {
                 .expect[String](req(publicReposUri))
                 .map(_.into[PublicRepos])
                 .onError(e => IO.println(s"error during part 1: $e"))
-              _ = println(s"public repos: $publicRepos")
               // for each page you get 100 repos, for Google it's 2560 =>
-              pages = (1 to (publicRepos.int / 100) + 1).toVector // 26 parallel HTTP requests: => (2560 / 100) + 1 = 25 + 1 = 26
+              pages = (1 to (publicRepos.value / 100) + 1).toVector // 26 parallel HTTP requests: => (2560 / 100) + 1 = 25 + 1 = 26
               repositories <- pages.parUnorderedFlatTraverse { page =>
                   IO.fromEither(uri(reposUrl(orgName, page)))
                     .flatMap { reposUri =>
@@ -97,7 +95,7 @@ object Main extends IOApp.Simple {
                     if ((page > 1 && contributors.size % 100 != 0) || isEmpty)
                       IO.pure(contributors)
                     else {
-                      val repoUrl = contributorsUrl(repoName.str, orgName, page)
+                      val repoUrl = contributorsUrl(repoName.value, orgName, page)
                       IO.fromEither(uri(repoUrl))
                         .flatMap { repoUri =>
                           for {
@@ -149,15 +147,16 @@ object Main extends IOApp.Simple {
     }
     given ReadsPublicRepos: Reads[PublicRepos] = (__ \ "public_repos").read[Int].map(PublicRepos.apply)
     extension (repos: PublicRepos)
-      def int: Int = repos
+      def value: Int = repos
 
 
     opaque type RepoName = String
     object RepoName  {
-      def apply(value: String): RepoName = value }
+      def apply(value: String): RepoName = value
+    }
     given ReadsRepo: Reads[RepoName] = (__ \ "name").read[String].map(RepoName.apply)
     extension (repoName: RepoName)
-      def str: String = repoName
+      def value: String = repoName
 
     final case class Contributor(login: String, contributions: Long)
     given ReadsContributor: Reads[Contributor] = json =>

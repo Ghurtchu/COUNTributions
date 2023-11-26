@@ -44,7 +44,9 @@ Benchmarks for different organizations:
 - [lightbend](json/lightbend.json) - 5 seconds, 109 public repos, 1558 contributors
 - [facebook](json/facebook.json) - 6 seconds, 128 public repos, 8687 contributors
 - [apache](json/apache.json) - 10 seconds, 2534 repos, 10818 contributors
-- [google](json/google.json) - 15 seconds, 2560 public repos, 14000 contributors
+- [google](json/google.json) - 15 seconds, 2560 public repos, 12796 contributors
+
+more benchmarks in progress
 
 
 

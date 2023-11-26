@@ -38,10 +38,13 @@ You are welcome to improve the implementation.
 ```
 
 Benchmarks for different organizations: 
-- quantori - 3 seconds, 59 public repos, 1000 contributors
-- typelevel - 4 seconds, 101 public repos, 1500 contributors
-- zio - 5 seconds, 94 public repos, 2000 contributors
-- Google - 15 seconds, 2560 public repos, 14000 contributors
+- [quantori](json/quantori.json) - 3 seconds, 59 public repos, 604 contributors
+- [typelevel](json/typelevel.json) - 4 seconds, 101 public repos, 1077 contributors
+- [zio](json/zio.json) - 5 seconds, 94 public repos, 1276 contributors
+- [lightbend](json/lightbend.json) - 5 seconds, 109 public repos, 1558 contributors
+- [facebook](json/facebook.json) - 6 seconds, 128 public repos, 8687 contributors
+- [apache](json/apache.json) - 10 seconds, 2534 repos, 10818 contributors
+- [google](json/google.json) - 15 seconds, 2560 public repos, 14000 contributors
 
 
 

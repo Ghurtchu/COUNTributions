@@ -34,6 +34,7 @@ object Main extends IOApp.Simple {
     (for {
       _ <- info"starting server".toResource
       token <- IO.delay(ConfigSource.default.loadOrThrow[Token]).toResource
+      _ = println(token.token)
       client <- EmberClientBuilder.default[IO].build
       _ <- EmberServerBuilder
         .default[IO]
@@ -45,14 +46,14 @@ object Main extends IOApp.Simple {
 
   def publicReposUrl(orgName: String) = s"https://api.github.com/orgs/$orgName"
 
-  def contributorsUrl(repoName: RepoName, orgName: String, page: Int): String =
+  def contributorsUrl(repoName: String, orgName: String, page: Int): String =
     s"https://api.github.com/repos/$orgName/$repoName/contributors?per_page=100&page=$page"
 
   def reposUrl(orgName: String, page: Int): String =
     s"https://api.github.com/orgs/$orgName/repos?per_page=100&page=$page"
 
   def req(uri: Uri)(using token: Token) = Request[IO](Method.GET, uri)
-    .putHeaders(Raw(CIString("Authorization"), s"Bearer $token"))
+    .putHeaders(Raw(CIString("Authorization"), s"Bearer ${token.token}"))
 
   def uri: String => Either[ParseFailure, Uri] = Uri.fromString
 
@@ -73,8 +74,9 @@ object Main extends IOApp.Simple {
                 .expect[String](req(publicReposUri))
                 .map(_.into[PublicRepos])
                 .onError(e => IO.println(s"error during part 1: $e"))
+              _ = println(s"public repos: $publicRepos")
               // for each page you get 100 repos, for Google it's 2560 =>
-              pages = (1 to (publicRepos / 100) + 1).toVector // 26 parallel HTTP requests: => (2560 / 100) + 1 = 25 + 1 = 26
+              pages = (1 to (publicRepos.int / 100) + 1).toVector // 26 parallel HTTP requests: => (2560 / 100) + 1 = 25 + 1 = 26
               repositories <- pages.parUnorderedFlatTraverse { page =>
                   IO.fromEither(uri(reposUrl(orgName, page)))
                     .flatMap { reposUri =>
@@ -95,8 +97,7 @@ object Main extends IOApp.Simple {
                     if ((page > 1 && contributors.size % 100 != 0) || isEmpty)
                       IO.pure(contributors)
                     else {
-                      val repoUrl = contributorsUrl(repoName, orgName, page)
-                      // println(s"sending request to: $repoUrl")
+                      val repoUrl = contributorsUrl(repoName.str, orgName, page)
                       IO.fromEither(uri(repoUrl))
                         .flatMap { repoUri =>
                           for {
@@ -141,11 +142,22 @@ object Main extends IOApp.Simple {
     import Reads.{IntReads, StringReads}
     import play.api.libs.json._
 
-    type PublicRepos = Int
-    given ReadsPublicRepos: Reads[PublicRepos] = (__ \ "public_repos").readWithDefault[Int](0)
 
-    type RepoName = String
-    given ReadsRepo: Reads[RepoName] = (__ \ "name").read[String]
+    opaque type PublicRepos = Int
+    object PublicRepos {
+      def apply(value: Int): PublicRepos = value
+    }
+    given ReadsPublicRepos: Reads[PublicRepos] = (__ \ "public_repos").read[Int].map(PublicRepos.apply)
+    extension (repos: PublicRepos)
+      def int: Int = repos
+
+
+    opaque type RepoName = String
+    object RepoName  {
+      def apply(value: String): RepoName = value }
+    given ReadsRepo: Reads[RepoName] = (__ \ "name").read[String].map(RepoName.apply)
+    extension (repoName: RepoName)
+      def str: String = repoName
 
     final case class Contributor(login: String, contributions: Long)
     given ReadsContributor: Reads[Contributor] = json =>

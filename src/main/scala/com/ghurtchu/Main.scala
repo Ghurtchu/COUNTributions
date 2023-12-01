@@ -54,11 +54,8 @@ object Main extends IOApp.Simple {
   def req(uri: Uri)(using token: Token) = Request[IO](Method.GET, uri)
     .putHeaders(Raw(CIString("Authorization"), s"Bearer ${token.token}"))
 
-  def uriOrError: String => Either[ParseFailure, Uri] =
-    Uri.fromString
-
   def uri(url: String): IO[Uri] =
-    IO.fromEither(uriOrError(url))
+    IO.fromEither(Uri.fromString(url))
 
   def fetch[A: Reads](uri: Uri, client: Client[IO], default: => A)(using token: Token): IO[A] =
     client

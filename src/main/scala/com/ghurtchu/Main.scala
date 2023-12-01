@@ -64,8 +64,6 @@ object Main extends IOApp.Simple {
       .onError(IO.println)
       .handleError(_ => default)
 
-
-
   def routes(client: Client[IO], token: Token): HttpRoutes[IO] = {
     given tk: Token = token
     HttpRoutes.of[IO] {

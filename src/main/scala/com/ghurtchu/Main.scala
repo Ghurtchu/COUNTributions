@@ -43,19 +43,22 @@ object Main extends IOApp.Simple {
         .build
     } yield ()).useForever
 
-  def publicReposUrl(orgName: String) = s"https://api.github.com/orgs/$orgName"
+  def publicRepos(orgName: String) = s"https://api.github.com/orgs/$orgName"
 
   def contributorsUrl(repoName: String, orgName: String, page: Int): String =
     s"https://api.github.com/repos/$orgName/$repoName/contributors?per_page=100&page=$page"
 
-  def reposUrl(orgName: String, page: Int): String =
+  def repos(orgName: String, page: Int): String =
     s"https://api.github.com/orgs/$orgName/repos?per_page=100&page=$page"
 
   def req(uri: Uri)(using token: Token) = Request[IO](Method.GET, uri)
     .putHeaders(Raw(CIString("Authorization"), s"Bearer ${token.token}"))
 
-  def uri: String => Either[ParseFailure, Uri] =
+  def uriOrError: String => Either[ParseFailure, Uri] =
     Uri.fromString
+
+  def uri(url: String): IO[Uri] =
+    IO.fromEither(uriOrError(url))
 
   def fetch[A: Reads](uri: Uri, client: Client[IO], default: => A)(using token: Token): IO[A] =
     client
@@ -66,56 +69,57 @@ object Main extends IOApp.Simple {
 
   def routes(client: Client[IO], token: Token): HttpRoutes[IO] = {
     given tk: Token = token
+
     HttpRoutes.of[IO] {
 
       case GET -> Root => Ok("hi :)")
 
       case GET -> Root / "org" / orgName =>
-        IO.fromEither(uri(publicReposUrl(orgName)))
-          .flatMap { publicReposUri =>
-            for {
-              start <- IO.realTime
-              publicRepos <- fetch[PublicRepos](publicReposUri, client, PublicRepos.Emptpy)
-              pages = (1 to (publicRepos.value / 100) + 1).toVector
-              repositories <- pages.parUnorderedFlatTraverse { page =>
-                IO.fromEither(uri(reposUrl(orgName, page)))
-                  .flatMap(fetch[Vector[RepoName]](_, client, Vector.empty))
-              }
-              contributors <- repositories
-                .parUnorderedFlatTraverse { repoName =>
-                  def getContributors(
-                    page: Int,
-                    contributors: Vector[Contributor],
-                    isEmpty: Boolean = false,
-                  ): IO[Vector[Contributor]] =
-                    if ((page > 1 && contributors.size % 100 != 0) || isEmpty) IO.pure(contributors)
-                    else {
-                      val repoUrl = contributorsUrl(repoName.value, orgName, page)
-                      IO.fromEither(uri(repoUrl))
-                        .flatMap { repoUri =>
-                          for {
-                            newContributors <- fetch[Vector[Contributor]](repoUri, client, Vector.empty)
-                            next <- getContributors(
-                              page = page + 1,
-                              contributors = contributors ++ newContributors,
-                              isEmpty = newContributors.isEmpty,
-                            )
-                          } yield next
-                        }
-                    }
+        for {
+          start <- IO.realTime
+          response <- uri(publicRepos(orgName))
+            .flatMap { publicReposUri =>
+              for {
+                publicRepos <- fetch[PublicRepos](publicReposUri, client, PublicRepos.Emptpy)
+                pages = (1 to (publicRepos.value / 100) + 1).toVector
+                repositories <- pages.parUnorderedFlatTraverse { page =>
+                  uri(repos(orgName, page))
+                    .flatMap(fetch[Vector[RepoName]](_, client, Vector.empty))
+                }
+                contributors <- repositories
+                  .parUnorderedFlatTraverse { repoName =>
+                    def getContributors(
+                      page: Int,
+                      contributors: Vector[Contributor],
+                      isEmpty: Boolean = false,
+                    ): IO[Vector[Contributor]] =
+                      if ((page > 1 && contributors.size % 100 != 0) || isEmpty) IO.pure(contributors)
+                      else {
+                        uri(contributorsUrl(repoName.value, orgName, page))
+                          .flatMap { repoUri =>
+                            for {
+                              newContributors <- fetch[Vector[Contributor]](repoUri, client, Vector.empty)
+                              next <- getContributors(
+                                page = page + 1,
+                                contributors = contributors ++ newContributors,
+                                isEmpty = newContributors.isEmpty,
+                              )
+                            } yield next
+                          }
+                      }
 
-                  getContributors(1, Vector.empty)
-                }
-                .map {
-                  _.groupMapReduce(_.login)(_.contributions)(_ + _).toVector
-                    .map(Contributor(_, _))
-                    .sortWith(_.contributions > _.contributions)
-                }
-              end <- IO.realTime
-              result <- Ok(Contributions(contributors.size, contributors).toJson)
-              _ <- info"${(start - end).toSeconds}"
-            } yield result
-          }
+                    getContributors(page = 1, contributors = Vector.empty)
+                  }
+                  .map {
+                    _.groupMapReduce(_.login)(_.contributions)(_ + _).toVector
+                      .map(Contributor(_, _))
+                      .sortWith(_.contributions > _.contributions)
+                  }
+                result <- Ok(Contributions(contributors.size, contributors).toJson)
+              } yield result
+            }
+          _ <- IO.realTime.flatTap(now => IO.println(s"operation took ${(now - start).toSeconds} seconds"))
+        } yield response
     }
   }
 

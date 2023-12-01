@@ -22,5 +22,5 @@ lazy val root = (project in file("."))
       case x => (assembly / assemblyMergeStrategy).value.apply(x)
     },
     assembly / mainClass := Some("Main"),
-    assembly / assemblyJarName := "lb.jar",
+    assembly / assemblyJarName := "contrib.jar",
   )

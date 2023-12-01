@@ -54,57 +54,49 @@ object Main extends IOApp.Simple {
   def req(uri: Uri)(using token: Token) = Request[IO](Method.GET, uri)
     .putHeaders(Raw(CIString("Authorization"), s"Bearer ${token.token}"))
 
-  def uri: String => Either[ParseFailure, Uri] = Uri.fromString
+  def uri: String => Either[ParseFailure, Uri] =
+    Uri.fromString
+
+  def fetch[A: Reads](uri: Uri, client: Client[IO], default: => A)(using token: Token): IO[A] =
+    client
+      .expect[String](req(uri))
+      .map(_.into[A])
+      .onError(IO.println)
+      .handleError(_ => default)
+
+
 
   def routes(client: Client[IO], token: Token): HttpRoutes[IO] = {
     given tk: Token = token
     HttpRoutes.of[IO] {
 
-      // simple health check
       case GET -> Root => Ok("hi :)")
 
-      // let's discuss the extreme case - Google organization
       case GET -> Root / "org" / orgName =>
         IO.fromEither(uri(publicReposUrl(orgName)))
           .flatMap { publicReposUri =>
             for {
               start <- IO.realTime
-              publicRepos <- client
-                .expect[String](req(publicReposUri))
-                .map(_.into[PublicRepos])
-                .onError(e => IO.println(s"error during part 1: $e"))
-              _ = println(s"repos: $publicRepos")
-              // for each page you get 100 repos, for Google it's 2560 =>
-              pages = (1 to (publicRepos.value / 100) + 1).toVector // 26 parallel HTTP requests: => (2560 / 100) + 1 = 25 + 1 = 26
+              publicRepos <- fetch[PublicRepos](publicReposUri, client, PublicRepos.Emptpy)
+              pages = (1 to (publicRepos.value / 100) + 1).toVector
               repositories <- pages.parUnorderedFlatTraverse { page =>
-                  IO.fromEither(uri(reposUrl(orgName, page)))
-                    .flatMap { reposUri =>
-                      client
-                        .expect[String](req(reposUri))
-                        .map(_.into[Vector[RepoName]])
-                        .onError(e => IO.println(s"error during part2: $e"))
-                        .handleError(_ => Vector.empty)
-                    }
+                IO.fromEither(uri(reposUrl(orgName, page)))
+                  .flatMap(fetch[Vector[RepoName]](_, client, Vector.empty))
               }
-              contributors <- repositories // Vector of 2560 repos -> 2560 fibers
-                .parUnorderedFlatTraverse { repoName => // Vector[Vector[...]].flatten => Vector[...]
+              contributors <- repositories
+                .parUnorderedFlatTraverse { repoName =>
                   def getContributors(
                     page: Int,
                     contributors: Vector[Contributor],
-                    isEmpty: Boolean = false
+                    isEmpty: Boolean = false,
                   ): IO[Vector[Contributor]] =
-                    if ((page > 1 && contributors.size % 100 != 0) || isEmpty)
-                      IO.pure(contributors)
+                    if ((page > 1 && contributors.size % 100 != 0) || isEmpty) IO.pure(contributors)
                     else {
                       val repoUrl = contributorsUrl(repoName.value, orgName, page)
                       IO.fromEither(uri(repoUrl))
                         .flatMap { repoUri =>
                           for {
-                            newContributors <- client
-                              .expect[String](req(repoUri))
-                              .map(_.into[Vector[Contributor]])
-                              .onError(e => IO.println(s"error during part 3: $e"))
-                              .handleError(_ => Vector.empty)
+                            newContributors <- fetch[Vector[Contributor]](repoUri, client, Vector.empty)
                             next <- getContributors(
                               page = page + 1,
                               contributors = contributors ++ newContributors,
@@ -116,25 +108,22 @@ object Main extends IOApp.Simple {
 
                   getContributors(1, Vector.empty)
                 }
-                .map { // sort contributors in descending order by amount of contributions
+                .map {
                   _.groupMapReduce(_.login)(_.contributions)(_ + _).toVector
                     .map(Contributor(_, _))
                     .sortWith(_.contributions > _.contributions)
                 }
               end <- IO.realTime
-              _ = println(contributors.size)
               result <- Ok(Contributions(contributors.size, contributors).toJson)
-              _ <- info"${(start - end).toSeconds}" // measure how much time it took
+              _ <- info"${(start - end).toSeconds}"
             } yield result
           }
     }
   }
 
   object syntax {
-    extension(self: String)
-      def into[A](using r: Reads[A]): A = Json.parse(self).as[A]
-    extension[A](self: A)
-      def toJson(using w: Writes[A]): String = Json.prettyPrint(w.writes(self))
+    extension (self: String) def into[A](using r: Reads[A]): A = Json.parse(self).as[A]
+    extension [A](self: A) def toJson(using w: Writes[A]): String = Json.prettyPrint(w.writes(self))
   }
 
   object domain {
@@ -142,30 +131,27 @@ object Main extends IOApp.Simple {
     import Reads.{IntReads, StringReads}
     import play.api.libs.json._
 
-
     opaque type PublicRepos = Int
     object PublicRepos {
+      val Emptpy: PublicRepos = PublicRepos.apply(0)
       def apply(value: Int): PublicRepos = value
     }
     given ReadsPublicRepos: Reads[PublicRepos] = (__ \ "public_repos").read[Int].map(PublicRepos.apply)
-    extension (repos: PublicRepos)
-      def value: Int = repos
-
+    extension (repos: PublicRepos) def value: Int = repos
 
     opaque type RepoName = String
-    object RepoName  {
+    object RepoName {
       def apply(value: String): RepoName = value
     }
     given ReadsRepo: Reads[RepoName] = (__ \ "name").read[String].map(RepoName.apply)
-    extension (repoName: RepoName)
-      def value: String = repoName
+    extension (repoName: RepoName) def value: String = repoName
 
     final case class Contributor(login: String, contributions: Long)
     given ReadsContributor: Reads[Contributor] = json =>
       (
         (json \ "login").asOpt[String],
-        (json \ "contributions").asOpt[Long]
-      ).tupled.fold(JsError("parse failure")) { (lo, co) => JsSuccess(Contributor(lo, co)) }
+        (json \ "contributions").asOpt[Long],
+      ).tupled.fold(JsError("parse failure"))((lo, co) => JsSuccess(Contributor(lo, co)))
     given WritesContributor: Writes[Contributor] = Json.writes[Contributor]
 
     final case class Contributions(count: Long, contributors: Vector[Contributor])

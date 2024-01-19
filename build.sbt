@@ -12,12 +12,6 @@ lazy val root = (project in file("."))
       "org.http4s" %% "http4s-dsl" % Http4sVersion,
       "com.typesafe.play" %% "play-json" % "2.10.3",
       "com.github.pureconfig" %% "pureconfig-core" % "0.17.4",
-      "ch.qos.logback" % "logback-classic" % "1.4.11" % Runtime,
+      "ch.qos.logback" % "logback-classic" % "1.4.12" % Runtime,
     ),
-    assembly / assemblyMergeStrategy := {
-      case "module-info.class" => MergeStrategy.discard
-      case x => (assembly / assemblyMergeStrategy).value.apply(x)
-    },
-    assembly / mainClass := Some("Main"),
-    assembly / assemblyJarName := "app.jar",
   )

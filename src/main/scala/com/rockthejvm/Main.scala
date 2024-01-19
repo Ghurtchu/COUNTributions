@@ -1,4 +1,4 @@
-package com.ghurtchu
+package com.rockthejvm
 
 import cats.effect.{IO, IOApp}
 import org.http4s.Header.Raw
@@ -13,8 +13,8 @@ import org.typelevel.log4cats.Logger
 import org.typelevel.log4cats.slf4j.Slf4jLogger
 import cats.syntax.all.*
 import org.typelevel.log4cats.syntax.LoggerInterpolator
-import com.ghurtchu.Main.syntax.*
-import com.ghurtchu.Main.domain.*
+import com.rockthejvm.Main.syntax.*
+import com.rockthejvm.Main.domain.*
 import play.api.libs.json.*
 import play.api.libs.*
 import cats.implicits.*
@@ -74,47 +74,46 @@ object Main extends IOApp.Simple {
       case GET -> Root / "org" / orgName =>
         for {
           start <- IO.realTime
-          response <- uri(publicRepos(orgName))
-            .flatMap { publicReposUri =>
-              for {
-                publicRepos <- fetch[PublicRepos](publicReposUri, client, PublicRepos.Emptpy)
-                pages = (1 to (publicRepos.value / 100) + 1).toVector
-                repositories <- pages.parUnorderedFlatTraverse { page =>
-                  uri(repos(orgName, page))
-                    .flatMap(fetch[Vector[RepoName]](_, client, Vector.empty))
-                }
-                contributors <- repositories
-                  .parUnorderedFlatTraverse { repoName =>
-                    def getContributors(
-                      page: Int,
-                      contributors: Vector[Contributor],
-                      isEmpty: Boolean = false,
-                    ): IO[Vector[Contributor]] =
-                      if ((page > 1 && contributors.size % 100 != 0) || isEmpty) IO.pure(contributors)
-                      else {
-                        uri(contributorsUrl(repoName.value, orgName, page))
-                          .flatMap { repoUri =>
-                            for {
-                              newContributors <- fetch[Vector[Contributor]](repoUri, client, Vector.empty)
-                              next <- getContributors(
-                                page = page + 1,
-                                contributors = contributors ++ newContributors,
-                                isEmpty = newContributors.isEmpty,
-                              )
-                            } yield next
-                          }
-                      }
+          response <- uri(publicRepos(orgName)).flatMap { publicReposUri =>
+            for {
+              publicRepos <- fetch[PublicRepos](publicReposUri, client, PublicRepos.Emptpy)
+              pages = (1 to (publicRepos.value / 100) + 1).toVector
+              repositories <- pages.parUnorderedFlatTraverse { page =>
+                uri(repos(orgName, page))
+                  .flatMap(fetch[Vector[RepoName]](_, client, Vector.empty))
+              }
+              contributors <- repositories
+                .parUnorderedFlatTraverse { repoName =>
+                  def getContributors(
+                    page: Int,
+                    contributors: Vector[Contributor],
+                    isEmpty: Boolean = false,
+                  ): IO[Vector[Contributor]] =
+                    if ((page > 1 && contributors.size % 100 != 0) || isEmpty) IO.pure(contributors)
+                    else {
+                      uri(contributorsUrl(repoName.value, orgName, page))
+                        .flatMap { contributorUri =>
+                          for {
+                            newContributors <- fetch[Vector[Contributor]](contributorUri, client, Vector.empty)
+                            next <- getContributors(
+                              page = page + 1,
+                              contributors = contributors ++ newContributors,
+                              isEmpty = newContributors.isEmpty,
+                            )
+                          } yield next
+                        }
+                    }
 
-                    getContributors(page = 1, contributors = Vector.empty)
-                  }
-                  .map {
-                    _.groupMapReduce(_.login)(_.contributions)(_ + _).toVector
-                      .map(Contributor(_, _))
-                      .sortWith(_.contributions > _.contributions)
-                  }
-                result <- Ok(Contributions(contributors.size, contributors).toJson)
-              } yield result
-            }
+                  getContributors(page = 1, contributors = Vector.empty)
+                }
+                .map {
+                  _.groupMapReduce(_.login)(_.contributions)(_ + _).toVector
+                    .map(Contributor(_, _))
+                    .sortWith(_.contributions > _.contributions)
+                }
+              result <- Ok(Contributions(contributors.size, contributors).toJson)
+            } yield result
+          }
           _ <- IO.realTime.flatTap(now => IO.println(s"operation took ${(now - start).toSeconds} seconds"))
         } yield response
     }

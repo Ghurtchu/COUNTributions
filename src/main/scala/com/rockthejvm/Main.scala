@@ -2,7 +2,7 @@ package com.rockthejvm
 
 import org.http4s.Header.Raw
 import org.http4s.client.Client
-import org.http4s.{EntityDecoder, Header, HttpRoutes, Method, ParseFailure, Request, Response, Uri}
+import org.http4s.{EntityDecoder, Header, HttpRoutes, Method, ParseFailure, Request, Response, Status, Uri}
 import org.typelevel.ci.CIString
 import com.rockthejvm.Main.syntax.*
 import com.rockthejvm.Main.domain.*
@@ -18,7 +18,6 @@ import cats.implicits.*
 import cats.effect.{IO, IOApp}
 import org.http4s.dsl.io.*
 import org.http4s.ember.server.EmberServerBuilder
-import org.http4s.HttpRoutes
 import org.typelevel.log4cats.Logger
 import org.typelevel.log4cats.slf4j.Slf4jLogger
 import org.typelevel.log4cats.syntax.LoggerInterpolator
@@ -63,7 +62,11 @@ object Main extends IOApp.Simple {
     client
       .expect[String](req(uri))
       .map(_.into[A])
-      .onError(err => error"$err")
+      .onError {
+        case org.http4s.client.UnexpectedStatus(Status.Unauthorized, _, _) =>
+          error"GitHub token is either expired or absent, please check `token` key in src/main/resources/application.conf"
+        case other => error"other"
+      }
       .handleErrorWith(_ => warn"returning default value: $default for $uri".as(default))
 
   private def getContributorsPerRepo(
@@ -79,7 +82,9 @@ object Main extends IOApp.Simple {
       uri(contributorsUrl(repoName.value, orgName, page))
         .flatMap { contributorUri =>
           for {
+            _ <- info"requesting page: $page of $repoName contributors"
             newContributors <- fetch[Vector[Contributor]](contributorUri, client, Vector.empty)
+            _ <- info"fetched ${newContributors.size} contributors on page: $page for $repoName"
             next <- getContributorsPerRepo(
               client = client,
               repoName = repoName,

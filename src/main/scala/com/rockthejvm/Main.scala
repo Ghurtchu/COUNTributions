@@ -67,7 +67,7 @@ object Main extends IOApp.Simple {
           error"GitHub token is either expired or absent, please check `token` key in src/main/resources/application.conf"
         case other => error"other"
       }
-      .handleErrorWith(_ => warn"returning default value: $default for $uri".as(default))
+      .handleErrorWith(_ => warn"returning default value: $default for $uri due to unexpected error" as default)
 
   private def getContributorsPerRepo(
     client: Client[IO],
@@ -133,7 +133,7 @@ object Main extends IOApp.Simple {
           _ <- info"returning aggregated & sorted contributors for $orgName"
           response <- Ok(Contributions(contributors.size, contributors).toJson)
           end <- IO.realTime
-          _ <- info"it all took ${(end - start).toSeconds} seconds"
+          _ <- info"aggregation took ${(end - start).toSeconds} seconds"
         } yield response
     }
   }

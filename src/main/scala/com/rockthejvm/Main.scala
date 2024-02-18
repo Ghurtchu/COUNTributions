@@ -6,8 +6,8 @@ import org.http4s.{EntityDecoder, Header, HttpRoutes, Method, ParseFailure, Requ
 import org.typelevel.ci.CIString
 import com.rockthejvm.Main.syntax.*
 import com.rockthejvm.Main.domain.*
-import pureconfig._
-import pureconfig.generic.derivation.default._
+import pureconfig.*
+import pureconfig.generic.derivation.default.*
 import org.http4s.ember.client.EmberClientBuilder
 import org.http4s.dsl.*
 import cats.syntax.all.*
@@ -23,6 +23,7 @@ import org.typelevel.log4cats.Logger
 import org.typelevel.log4cats.slf4j.Slf4jLogger
 import org.typelevel.log4cats.syntax.LoggerInterpolator
 import com.comcast.ip4s.*
+import com.rockthejvm.Main.getContributorsPerRepo
 
 object Main extends IOApp.Simple {
 
@@ -62,8 +63,8 @@ object Main extends IOApp.Simple {
     client
       .expect[String](req(uri))
       .map(_.into[A])
-      .onError(IO.println)
-      .handleError(_ => default)
+      .onError(err => error"$err")
+      .handleErrorWith(_ => warn"returning default value: $default for $uri".as(default))
 
   private def getContributorsPerRepo(
     client: Client[IO],
@@ -98,21 +99,36 @@ object Main extends IOApp.Simple {
       case GET -> Root => Ok("hi :)")
       case GET -> Root / "org" / orgName =>
         for {
+          start <- IO.realTime
+          _ <- info"accepted $orgName"
           publicReposUri <- uri(publicRepos(orgName))
+          _ <- info"fetching the amount of available repositories for $orgName"
           publicRepos <- fetch[PublicRepos](publicReposUri, client, PublicRepos.Empty)
+          _ <- info"amount of public repositories for $orgName: $publicRepos"
           pages = (1 to (publicRepos.value / 100) + 1).toVector
           repositories <- pages.parUnorderedFlatTraverse { page =>
             uri(repos(orgName, page))
               .flatMap(fetch[Vector[RepoName]](_, client, Vector.empty[RepoName]))
           }
+          _ <- info"$publicRepos repositories were collected for $orgName"
+          _ <- info"starting to fetch contributors for each repository"
           contributors <- repositories
-            .parUnorderedFlatTraverse(getContributorsPerRepo(client, _, orgName))
+            .parUnorderedFlatTraverse { repoName =>
+              for {
+                _ <- info"fetching contributors for $repoName"
+                contributors <- getContributorsPerRepo(client, repoName, orgName)
+                _ <- info"fetched amount of contributors for $repoName: ${contributors.size}"
+              } yield contributors
+            }
             .map {
               _.groupMapReduce(_.login)(_.contributions)(_ + _).toVector
                 .map(Contributor(_, _))
                 .sortWith(_.contributions > _.contributions)
             }
+          _ <- info"returning aggregated & sorted contributors for $orgName"
           response <- Ok(Contributions(contributors.size, contributors).toJson)
+          end <- IO.realTime
+          _ <- info"it all took ${(end - start).toSeconds} seconds"
         } yield response
     }
   }

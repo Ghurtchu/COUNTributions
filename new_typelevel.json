@@ -1,0 +1,3301 @@
+{
+  "count" : 1099,
+  "contributors" : [ {
+    "login" : "scala-steward",
+    "contributions" : 9211
+  }, {
+    "login" : "typelevel-steward[bot]",
+    "contributions" : 5831
+  }, {
+    "login" : "armanbilge",
+    "contributions" : 5816
+  }, {
+    "login" : "mpilquist",
+    "contributions" : 5091
+  }, {
+    "login" : "larsrh",
+    "contributions" : 3986
+  }, {
+    "login" : "rossabaker",
+    "contributions" : 2933
+  }, {
+    "login" : "djspiewak",
+    "contributions" : 2902
+  }, {
+    "login" : "jenshalm",
+    "contributions" : 2707
+  }, {
+    "login" : "non",
+    "contributions" : 2392
+  }, {
+    "login" : "danicheg",
+    "contributions" : 1776
+  }, {
+    "login" : "vasilmkd",
+    "contributions" : 1653
+  }, {
+    "login" : "ChristopherDavenport",
+    "contributions" : 1319
+  }, {
+    "login" : "kailuowang",
+    "contributions" : 1244
+  }, {
+    "login" : "mergify[bot]",
+    "contributions" : 1210
+  }, {
+    "login" : "tpolecat",
+    "contributions" : 1086
+  }, {
+    "login" : "SystemFw",
+    "contributions" : 1001
+  }, {
+    "login" : "travisbrown",
+    "contributions" : 974
+  }, {
+    "login" : "milessabin",
+    "contributions" : 971
+  }, {
+    "login" : "rickynils",
+    "contributions" : 807
+  }, {
+    "login" : "pchiusano",
+    "contributions" : 782
+  }, {
+    "login" : "sh0hei",
+    "contributions" : 778
+  }, {
+    "login" : "ceedubs",
+    "contributions" : 695
+  }, {
+    "login" : "TimWSpence",
+    "contributions" : 621
+  }, {
+    "login" : "darkfrog26",
+    "contributions" : 601
+  }, {
+    "login" : "fthomas",
+    "contributions" : 600
+  }, {
+    "login" : "pchlupacek",
+    "contributions" : 598
+  }, {
+    "login" : "stew",
+    "contributions" : 490
+  }, {
+    "login" : "adelbertc",
+    "contributions" : 474
+  }, {
+    "login" : "ahjohannessen",
+    "contributions" : 468
+  }, {
+    "login" : "joroKr21",
+    "contributions" : 445
+  }, {
+    "login" : "iRevive",
+    "contributions" : 416
+  }, {
+    "login" : "DavidGregory084",
+    "contributions" : 415
+  }, {
+    "login" : "cquiroz",
+    "contributions" : 381
+  }, {
+    "login" : "tixxit",
+    "contributions" : 357
+  }, {
+    "login" : "valencik",
+    "contributions" : 326
+  }, {
+    "login" : "johnynek",
+    "contributions" : 313
+  }, {
+    "login" : "Baccata",
+    "contributions" : 296
+  }, {
+    "login" : "bplommer",
+    "contributions" : 292
+  }, {
+    "login" : "kubukoz",
+    "contributions" : 274
+  }, {
+    "login" : "S11001001",
+    "contributions" : 249
+  }, {
+    "login" : "satorg",
+    "contributions" : 245
+  }, {
+    "login" : "denisrosset",
+    "contributions" : 234
+  }, {
+    "login" : "diesalbla",
+    "contributions" : 220
+  }, {
+    "login" : "OlivierBlanvillain",
+    "contributions" : 217
+  }, {
+    "login" : "edmundnoble",
+    "contributions" : 215
+  }, {
+    "login" : "isomarcte",
+    "contributions" : 215
+  }, {
+    "login" : "Alistair-Johnson",
+    "contributions" : 214
+  }, {
+    "login" : "ashawley",
+    "contributions" : 198
+  }, {
+    "login" : "xuwei-k",
+    "contributions" : 194
+  }, {
+    "login" : "rklaehn",
+    "contributions" : 181
+  }, {
+    "login" : "erik-stripe",
+    "contributions" : 177
+  }, {
+    "login" : "BalmungSan",
+    "contributions" : 166
+  }, {
+    "login" : "durban",
+    "contributions" : 164
+  }, {
+    "login" : "TonioGela",
+    "contributions" : 151
+  }, {
+    "login" : "benhutchison",
+    "contributions" : 142
+  }, {
+    "login" : "bpholt",
+    "contributions" : 120
+  }, {
+    "login" : "anicolaspp",
+    "contributions" : 119
+  }, {
+    "login" : "lorandszakacs",
+    "contributions" : 111
+  }, {
+    "login" : "yilinwei",
+    "contributions" : 109
+  }, {
+    "login" : "nikiforo",
+    "contributions" : 101
+  }, {
+    "login" : "lucuma-steward[bot]",
+    "contributions" : 101
+  }, {
+    "login" : "SethTisue",
+    "contributions" : 100
+  }, {
+    "login" : "imarios",
+    "contributions" : 96
+  }, {
+    "login" : "dependabot[bot]",
+    "contributions" : 84
+  }, {
+    "login" : "github-actions[bot]",
+    "contributions" : 84
+  }, {
+    "login" : "peterneyens",
+    "contributions" : 82
+  }, {
+    "login" : "aeons",
+    "contributions" : 80
+  }, {
+    "login" : "derekmorr",
+    "contributions" : 79
+  }, {
+    "login" : "samspills",
+    "contributions" : 78
+  }, {
+    "login" : "etspaceman",
+    "contributions" : 75
+  }, {
+    "login" : "julien-truffaut",
+    "contributions" : 73
+  }, {
+    "login" : "benkio",
+    "contributions" : 71
+  }, {
+    "login" : "fiadliel",
+    "contributions" : 68
+  }, {
+    "login" : "barambani",
+    "contributions" : 67
+  }, {
+    "login" : "LukaJCB",
+    "contributions" : 67
+  }, {
+    "login" : "oscar-stripe",
+    "contributions" : 66
+  }, {
+    "login" : "coltfred",
+    "contributions" : 60
+  }, {
+    "login" : "i10416",
+    "contributions" : 59
+  }, {
+    "login" : "gvolpe",
+    "contributions" : 56
+  }, {
+    "login" : "keynmol",
+    "contributions" : 50
+  }, {
+    "login" : "raulraja",
+    "contributions" : 50
+  }, {
+    "login" : "kanterov",
+    "contributions" : 49
+  }, {
+    "login" : "alexandrustana",
+    "contributions" : 49
+  }, {
+    "login" : "regadas",
+    "contributions" : 46
+  }, {
+    "login" : "osleonard",
+    "contributions" : 46
+  }, {
+    "login" : "dwijnand",
+    "contributions" : 45
+  }, {
+    "login" : "softinio",
+    "contributions" : 45
+  }, {
+    "login" : "TomasMikula",
+    "contributions" : 44
+  }, {
+    "login" : "rpiaggio",
+    "contributions" : 44
+  }, {
+    "login" : "thomas-stripe",
+    "contributions" : 43
+  }, {
+    "login" : "zainab-ali",
+    "contributions" : 43
+  }, {
+    "login" : "amarrella",
+    "contributions" : 42
+  }, {
+    "login" : "pomadchin",
+    "contributions" : 40
+  }, {
+    "login" : "stephenjudkins",
+    "contributions" : 39
+  }, {
+    "login" : "NthPortal",
+    "contributions" : 39
+  }, {
+    "login" : "dj707chen",
+    "contributions" : 37
+  }, {
+    "login" : "dusank",
+    "contributions" : 37
+  }, {
+    "login" : "nicolasstucki",
+    "contributions" : 36
+  }, {
+    "login" : "j-mie6",
+    "contributions" : 35
+  }, {
+    "login" : "garyKeorkunian",
+    "contributions" : 35
+  }, {
+    "login" : "vendamere",
+    "contributions" : 35
+  }, {
+    "login" : "domaspoliakas",
+    "contributions" : 34
+  }, {
+    "login" : "eed3si9n",
+    "contributions" : 33
+  }, {
+    "login" : "travisbrown-stripe",
+    "contributions" : 33
+  }, {
+    "login" : "jhnsmth",
+    "contributions" : 33
+  }, {
+    "login" : "alissapajer",
+    "contributions" : 33
+  }, {
+    "login" : "bwmcadams",
+    "contributions" : 32
+  }, {
+    "login" : "andyscott",
+    "contributions" : 31
+  }, {
+    "login" : "zetashift",
+    "contributions" : 31
+  }, {
+    "login" : "mox692",
+    "contributions" : 31
+  }, {
+    "login" : "mikejcurry",
+    "contributions" : 31
+  }, {
+    "login" : "vpavkin",
+    "contributions" : 31
+  }, {
+    "login" : "mtomko",
+    "contributions" : 31
+  }, {
+    "login" : "wemrysi",
+    "contributions" : 30
+  }, {
+    "login" : "Zelenya",
+    "contributions" : 30
+  }, {
+    "login" : "LLCampos",
+    "contributions" : 29
+  }, {
+    "login" : "juanpedromoreno",
+    "contributions" : 27
+  }, {
+    "login" : "hamnis",
+    "contributions" : 26
+  }, {
+    "login" : "sherriesyt",
+    "contributions" : 26
+  }, {
+    "login" : "AdamChlupacek",
+    "contributions" : 26
+  }, {
+    "login" : "zaneli",
+    "contributions" : 26
+  }, {
+    "login" : "milanvdm",
+    "contributions" : 25
+  }, {
+    "login" : "seanmcl",
+    "contributions" : 25
+  }, {
+    "login" : "ybasket",
+    "contributions" : 25
+  }, {
+    "login" : "paradigmsort",
+    "contributions" : 24
+  }, {
+    "login" : "kamilkloch",
+    "contributions" : 24
+  }, {
+    "login" : "keirlawson",
+    "contributions" : 24
+  }, {
+    "login" : "tonymorris",
+    "contributions" : 24
+  }, {
+    "login" : "frosforever",
+    "contributions" : 24
+  }, {
+    "login" : "majk-p",
+    "contributions" : 24
+  }, {
+    "login" : "gatear",
+    "contributions" : 23
+  }, {
+    "login" : "jatcwang",
+    "contributions" : 23
+  }, {
+    "login" : "chris-twiner",
+    "contributions" : 23
+  }, {
+    "login" : "Daenyth",
+    "contributions" : 23
+  }, {
+    "login" : "mandubian",
+    "contributions" : 22
+  }, {
+    "login" : "tom91136",
+    "contributions" : 22
+  }, {
+    "login" : "amesgen",
+    "contributions" : 22
+  }, {
+    "login" : "julienrf",
+    "contributions" : 22
+  }, {
+    "login" : "jedesah",
+    "contributions" : 22
+  }, {
+    "login" : "cb372",
+    "contributions" : 22
+  }, {
+    "login" : "Avasil",
+    "contributions" : 22
+  }, {
+    "login" : "zmccoy",
+    "contributions" : 22
+  }, {
+    "login" : "drostron",
+    "contributions" : 21
+  }, {
+    "login" : "paulp",
+    "contributions" : 21
+  }, {
+    "login" : "tmccarthy",
+    "contributions" : 21
+  }, {
+    "login" : "nigredo-tori",
+    "contributions" : 20
+  }, {
+    "login" : "smarter",
+    "contributions" : 20
+  }, {
+    "login" : "gagandeepkalra",
+    "contributions" : 20
+  }, {
+    "login" : "antoniojimeneznieto",
+    "contributions" : 20
+  }, {
+    "login" : "ivan-klass",
+    "contributions" : 20
+  }, {
+    "login" : "mcanlas",
+    "contributions" : 20
+  }, {
+    "login" : "reardonj",
+    "contributions" : 20
+  }, {
+    "login" : "yasuba",
+    "contributions" : 19
+  }, {
+    "login" : "saeltz",
+    "contributions" : 19
+  }, {
+    "login" : "RafalSumislawski",
+    "contributions" : 19
+  }, {
+    "login" : "rintcius",
+    "contributions" : 19
+  }, {
+    "login" : "kovstas",
+    "contributions" : 19
+  }, {
+    "login" : "yanns",
+    "contributions" : 18
+  }, {
+    "login" : "lenguyenthanh",
+    "contributions" : 18
+  }, {
+    "login" : "atamborrino",
+    "contributions" : 18
+  }, {
+    "login" : "bamine",
+    "contributions" : 18
+  }, {
+    "login" : "markus1189",
+    "contributions" : 18
+  }, {
+    "login" : "VlachJosef",
+    "contributions" : 18
+  }, {
+    "login" : "cranst0n",
+    "contributions" : 18
+  }, {
+    "login" : "seigert",
+    "contributions" : 18
+  }, {
+    "login" : "runarorama",
+    "contributions" : 18
+  }, {
+    "login" : "lukewyman",
+    "contributions" : 17
+  }, {
+    "login" : "mgibowski",
+    "contributions" : 17
+  }, {
+    "login" : "tothpeti",
+    "contributions" : 17
+  }, {
+    "login" : "zsambek",
+    "contributions" : 17
+  }, {
+    "login" : "morgen-peschke",
+    "contributions" : 17
+  }, {
+    "login" : "jducoeur",
+    "contributions" : 17
+  }, {
+    "login" : "GrafBlutwurst",
+    "contributions" : 17
+  }, {
+    "login" : "Jasper-M",
+    "contributions" : 17
+  }, {
+    "login" : "pk044",
+    "contributions" : 16
+  }, {
+    "login" : "takayahilton",
+    "contributions" : 16
+  }, {
+    "login" : "sbly",
+    "contributions" : 16
+  }, {
+    "login" : "lukoyanov",
+    "contributions" : 16
+  }, {
+    "login" : "stephen-lazaro",
+    "contributions" : 16
+  }, {
+    "login" : "Angel-O",
+    "contributions" : 16
+  }, {
+    "login" : "etorreborre",
+    "contributions" : 16
+  }, {
+    "login" : "Jacoby6000",
+    "contributions" : 15
+  }, {
+    "login" : "alexandru",
+    "contributions" : 15
+  }, {
+    "login" : "manufacturist",
+    "contributions" : 15
+  }, {
+    "login" : "massimosiani",
+    "contributions" : 15
+  }, {
+    "login" : "fabe",
+    "contributions" : 15
+  }, {
+    "login" : "custommonkey",
+    "contributions" : 15
+  }, {
+    "login" : "radekm",
+    "contributions" : 15
+  }, {
+    "login" : "janstenpickle",
+    "contributions" : 15
+  }, {
+    "login" : "daddykotex",
+    "contributions" : 15
+  }, {
+    "login" : "pepegar",
+    "contributions" : 14
+  }, {
+    "login" : "kmate",
+    "contributions" : 14
+  }, {
+    "login" : "gitter-badger",
+    "contributions" : 14
+  }, {
+    "login" : "christiankjaer",
+    "contributions" : 14
+  }, {
+    "login" : "catostrophe",
+    "contributions" : 14
+  }, {
+    "login" : "bryce-anderson",
+    "contributions" : 14
+  }, {
+    "login" : "Philippus",
+    "contributions" : 14
+  }, {
+    "login" : "ssanj",
+    "contributions" : 14
+  }, {
+    "login" : "bbstilson",
+    "contributions" : 14
+  }, {
+    "login" : "mijicd",
+    "contributions" : 14
+  }, {
+    "login" : "denisrosca",
+    "contributions" : 14
+  }, {
+    "login" : "martijnhoekstra",
+    "contributions" : 13
+  }, {
+    "login" : "gabro",
+    "contributions" : 13
+  }, {
+    "login" : "taig",
+    "contributions" : 13
+  }, {
+    "login" : "nikololiahim",
+    "contributions" : 13
+  }, {
+    "login" : "cchantep",
+    "contributions" : 13
+  }, {
+    "login" : "vbergeron-ledger",
+    "contributions" : 13
+  }, {
+    "login" : "patseev",
+    "contributions" : 13
+  }, {
+    "login" : "jbwheatley",
+    "contributions" : 13
+  }, {
+    "login" : "asakaev",
+    "contributions" : 13
+  }, {
+    "login" : "milanshen",
+    "contributions" : 13
+  }, {
+    "login" : "Wosin",
+    "contributions" : 13
+  }, {
+    "login" : "diogocanut",
+    "contributions" : 13
+  }, {
+    "login" : "greg-a-atkinson",
+    "contributions" : 13
+  }, {
+    "login" : "ShaneDelmore",
+    "contributions" : 12
+  }, {
+    "login" : "tkroman",
+    "contributions" : 12
+  }, {
+    "login" : "ryan-williams",
+    "contributions" : 12
+  }, {
+    "login" : "DomWos",
+    "contributions" : 12
+  }, {
+    "login" : "ghostroad",
+    "contributions" : 12
+  }, {
+    "login" : "eugkhp",
+    "contributions" : 12
+  }, {
+    "login" : "vigoo",
+    "contributions" : 12
+  }, {
+    "login" : "lJoublanc",
+    "contributions" : 12
+  }, {
+    "login" : "odersky",
+    "contributions" : 11
+  }, {
+    "login" : "Slakah",
+    "contributions" : 11
+  }, {
+    "login" : "AprilAtBanno",
+    "contributions" : 11
+  }, {
+    "login" : "pthariensflame",
+    "contributions" : 11
+  }, {
+    "login" : "Odomontois",
+    "contributions" : 11
+  }, {
+    "login" : "guizmaii",
+    "contributions" : 11
+  }, {
+    "login" : "notxcain",
+    "contributions" : 11
+  }, {
+    "login" : "CremboC",
+    "contributions" : 11
+  }, {
+    "login" : "mberndt123",
+    "contributions" : 11
+  }, {
+    "login" : "bwiercinski",
+    "contributions" : 11
+  }, {
+    "login" : "felixbr",
+    "contributions" : 11
+  }, {
+    "login" : "kevinmeredith",
+    "contributions" : 11
+  }, {
+    "login" : "ikr0m",
+    "contributions" : 10
+  }, {
+    "login" : "mzuehlke",
+    "contributions" : 10
+  }, {
+    "login" : "shengc",
+    "contributions" : 10
+  }, {
+    "login" : "brendanmaguire",
+    "contributions" : 10
+  }, {
+    "login" : "dantb",
+    "contributions" : 10
+  }, {
+    "login" : "Technius",
+    "contributions" : 10
+  }, {
+    "login" : "guersam",
+    "contributions" : 10
+  }, {
+    "login" : "lrytz",
+    "contributions" : 10
+  }, {
+    "login" : "svalaskevicius",
+    "contributions" : 10
+  }, {
+    "login" : "liff",
+    "contributions" : 10
+  }, {
+    "login" : "changlinli",
+    "contributions" : 10
+  }, {
+    "login" : "mrdziuban",
+    "contributions" : 10
+  }, {
+    "login" : "caiormt",
+    "contributions" : 9
+  }, {
+    "login" : "dangerousben",
+    "contributions" : 9
+  }, {
+    "login" : "olafurpg",
+    "contributions" : 9
+  }, {
+    "login" : "andresilva",
+    "contributions" : 9
+  }, {
+    "login" : "ChrisCoffey",
+    "contributions" : 9
+  }, {
+    "login" : "lrodero",
+    "contributions" : 9
+  }, {
+    "login" : "rpiotrow",
+    "contributions" : 9
+  }, {
+    "login" : "alexcardell",
+    "contributions" : 9
+  }, {
+    "login" : "andrzejressel",
+    "contributions" : 9
+  }, {
+    "login" : "forkedcancel",
+    "contributions" : 9
+  }, {
+    "login" : "crispywalrus",
+    "contributions" : 9
+  }, {
+    "login" : "pauljamescleary",
+    "contributions" : 9
+  }, {
+    "login" : "dabd",
+    "contributions" : 9
+  }, {
+    "login" : "paualarco",
+    "contributions" : 9
+  }, {
+    "login" : "bobbyrauchenberg",
+    "contributions" : 9
+  }, {
+    "login" : "fmeriaux",
+    "contributions" : 9
+  }, {
+    "login" : "jorgegalindocruces",
+    "contributions" : 9
+  }, {
+    "login" : "mn98",
+    "contributions" : 9
+  }, {
+    "login" : "lolgab",
+    "contributions" : 9
+  }, {
+    "login" : "pfcoperez",
+    "contributions" : 9
+  }, {
+    "login" : "n4to4",
+    "contributions" : 9
+  }, {
+    "login" : "aaronlevin",
+    "contributions" : 9
+  }, {
+    "login" : "ebenini-mdsol",
+    "contributions" : 9
+  }, {
+    "login" : "jyoo980",
+    "contributions" : 9
+  }, {
+    "login" : "justinhj",
+    "contributions" : 8
+  }, {
+    "login" : "timbertson",
+    "contributions" : 8
+  }, {
+    "login" : "sullis",
+    "contributions" : 8
+  }, {
+    "login" : "rabinarai1",
+    "contributions" : 8
+  }, {
+    "login" : "iravid",
+    "contributions" : 8
+  }, {
+    "login" : "InversionSpaces",
+    "contributions" : 8
+  }, {
+    "login" : "serhiip",
+    "contributions" : 8
+  }, {
+    "login" : "BenFradet",
+    "contributions" : 8
+  }, {
+    "login" : "shn-amn",
+    "contributions" : 8
+  }, {
+    "login" : "sritchie",
+    "contributions" : 8
+  }, {
+    "login" : "josgarmar28",
+    "contributions" : 8
+  }, {
+    "login" : "tmciver",
+    "contributions" : 8
+  }, {
+    "login" : "golem131",
+    "contributions" : 8
+  }, {
+    "login" : "matthughes",
+    "contributions" : 8
+  }, {
+    "login" : "kaiserpelagic",
+    "contributions" : 8
+  }, {
+    "login" : "oleg-py",
+    "contributions" : 8
+  }, {
+    "login" : "AdrianRaFo",
+    "contributions" : 8
+  }, {
+    "login" : "puffnfresh",
+    "contributions" : 8
+  }, {
+    "login" : "tbrown1979",
+    "contributions" : 7
+  }, {
+    "login" : "dmurvihill",
+    "contributions" : 7
+  }, {
+    "login" : "mwielocha",
+    "contributions" : 7
+  }, {
+    "login" : "naoh87",
+    "contributions" : 7
+  }, {
+    "login" : "ClydeMachine",
+    "contributions" : 7
+  }, {
+    "login" : "ant8e",
+    "contributions" : 7
+  }, {
+    "login" : "filosganga",
+    "contributions" : 7
+  }, {
+    "login" : "lacarvalho91",
+    "contributions" : 7
+  }, {
+    "login" : "joan38",
+    "contributions" : 7
+  }, {
+    "login" : "Fristi",
+    "contributions" : 7
+  }, {
+    "login" : "jopecko",
+    "contributions" : 7
+  }, {
+    "login" : "manuelcueto",
+    "contributions" : 7
+  }, {
+    "login" : "scott-thomson239",
+    "contributions" : 7
+  }, {
+    "login" : "gemelen",
+    "contributions" : 7
+  }, {
+    "login" : "jmcardon",
+    "contributions" : 7
+  }, {
+    "login" : "adampingel",
+    "contributions" : 7
+  }, {
+    "login" : "JosephMoniz",
+    "contributions" : 7
+  }, {
+    "login" : "hwielenberg",
+    "contributions" : 7
+  }, {
+    "login" : "allanrenucci",
+    "contributions" : 7
+  }, {
+    "login" : "bmjames",
+    "contributions" : 7
+  }, {
+    "login" : "callado4",
+    "contributions" : 7
+  }, {
+    "login" : "jaceklaskowski",
+    "contributions" : 7
+  }, {
+    "login" : "erikerlandson",
+    "contributions" : 7
+  }, {
+    "login" : "nvinuesa",
+    "contributions" : 7
+  }, {
+    "login" : "bastewart",
+    "contributions" : 7
+  }, {
+    "login" : "bwignall",
+    "contributions" : 7
+  }, {
+    "login" : "neomaclin",
+    "contributions" : 7
+  }, {
+    "login" : "joshmarcus",
+    "contributions" : 6
+  }, {
+    "login" : "francesconero",
+    "contributions" : 6
+  }, {
+    "login" : "jarrodu",
+    "contributions" : 6
+  }, {
+    "login" : "yakivy",
+    "contributions" : 6
+  }, {
+    "login" : "yurique",
+    "contributions" : 6
+  }, {
+    "login" : "lukestephenson-zendesk",
+    "contributions" : 6
+  }, {
+    "login" : "igstan",
+    "contributions" : 6
+  }, {
+    "login" : "asoltysik",
+    "contributions" : 6
+  }, {
+    "login" : "vendethiel",
+    "contributions" : 6
+  }, {
+    "login" : "FelAl",
+    "contributions" : 6
+  }, {
+    "login" : "DougC",
+    "contributions" : 6
+  }, {
+    "login" : "arosien",
+    "contributions" : 6
+  }, {
+    "login" : "sullivan-",
+    "contributions" : 6
+  }, {
+    "login" : "b-vennes",
+    "contributions" : 6
+  }, {
+    "login" : "ahoy196",
+    "contributions" : 6
+  }, {
+    "login" : "nrktkt",
+    "contributions" : 6
+  }, {
+    "login" : "DGolubets",
+    "contributions" : 6
+  }, {
+    "login" : "gkossakowski",
+    "contributions" : 6
+  }, {
+    "login" : "pkowalcze",
+    "contributions" : 6
+  }, {
+    "login" : "m50d",
+    "contributions" : 6
+  }, {
+    "login" : "spier",
+    "contributions" : 6
+  }, {
+    "login" : "aryairani",
+    "contributions" : 6
+  }, {
+    "login" : "JasnaMRB",
+    "contributions" : 6
+  }, {
+    "login" : "shokohara",
+    "contributions" : 6
+  }, {
+    "login" : "hunterpayne",
+    "contributions" : 6
+  }, {
+    "login" : "agustafson",
+    "contributions" : 6
+  }, {
+    "login" : "koterpillar",
+    "contributions" : 6
+  }, {
+    "login" : "MrAIring",
+    "contributions" : 6
+  }, {
+    "login" : "alejandrohdezma",
+    "contributions" : 6
+  }, {
+    "login" : "satabin",
+    "contributions" : 6
+  }, {
+    "login" : "calvinlfer",
+    "contributions" : 6
+  }, {
+    "login" : "kujon",
+    "contributions" : 5
+  }, {
+    "login" : "lukiano",
+    "contributions" : 5
+  }, {
+    "login" : "edwinchoi",
+    "contributions" : 5
+  }, {
+    "login" : "ixthe0",
+    "contributions" : 5
+  }, {
+    "login" : "DieBauer",
+    "contributions" : 5
+  }, {
+    "login" : "wedens",
+    "contributions" : 5
+  }, {
+    "login" : "bishabosha",
+    "contributions" : 5
+  }, {
+    "login" : "monadplus",
+    "contributions" : 5
+  }, {
+    "login" : "jeremyrsmith",
+    "contributions" : 5
+  }, {
+    "login" : "jhenahan",
+    "contributions" : 5
+  }, {
+    "login" : "b3nk3i",
+    "contributions" : 5
+  }, {
+    "login" : "shawjef3",
+    "contributions" : 5
+  }, {
+    "login" : "refried",
+    "contributions" : 5
+  }, {
+    "login" : "lavrov",
+    "contributions" : 5
+  }, {
+    "login" : "kiendang",
+    "contributions" : 5
+  }, {
+    "login" : "ijuma",
+    "contributions" : 5
+  }, {
+    "login" : "Lasering",
+    "contributions" : 5
+  }, {
+    "login" : "thesamet",
+    "contributions" : 5
+  }, {
+    "login" : "jcouyang",
+    "contributions" : 5
+  }, {
+    "login" : "AurelienRichez",
+    "contributions" : 5
+  }, {
+    "login" : "nebtrx",
+    "contributions" : 5
+  }, {
+    "login" : "Z1kkurat",
+    "contributions" : 5
+  }, {
+    "login" : "royaljust",
+    "contributions" : 5
+  }, {
+    "login" : "dhinojosa",
+    "contributions" : 5
+  }, {
+    "login" : "jan0sch",
+    "contributions" : 5
+  }, {
+    "login" : "CucumisSativus",
+    "contributions" : 5
+  }, {
+    "login" : "jonaskoelker",
+    "contributions" : 5
+  }, {
+    "login" : "kun-song",
+    "contributions" : 5
+  }, {
+    "login" : "Billzabob",
+    "contributions" : 5
+  }, {
+    "login" : "seratch",
+    "contributions" : 5
+  }, {
+    "login" : "ollyw",
+    "contributions" : 5
+  }, {
+    "login" : "adriaanm",
+    "contributions" : 5
+  }, {
+    "login" : "retronym",
+    "contributions" : 5
+  }, {
+    "login" : "zakpatterson",
+    "contributions" : 5
+  }, {
+    "login" : "heka1024",
+    "contributions" : 5
+  }, {
+    "login" : "susuro",
+    "contributions" : 5
+  }, {
+    "login" : "gatorcse",
+    "contributions" : 5
+  }, {
+    "login" : "hamednourhani",
+    "contributions" : 5
+  }, {
+    "login" : "fnussber",
+    "contributions" : 5
+  }, {
+    "login" : "hnaderi",
+    "contributions" : 5
+  }, {
+    "login" : "nasadorian",
+    "contributions" : 5
+  }, {
+    "login" : "japgolly",
+    "contributions" : 5
+  }, {
+    "login" : "EvgenyAfanasev",
+    "contributions" : 5
+  }, {
+    "login" : "sellout",
+    "contributions" : 5
+  }, {
+    "login" : "wookietreiber",
+    "contributions" : 5
+  }, {
+    "login" : "JackSullivan",
+    "contributions" : 4
+  }, {
+    "login" : "Qi77Qi",
+    "contributions" : 4
+  }, {
+    "login" : "enzief",
+    "contributions" : 4
+  }, {
+    "login" : "AlejandroME",
+    "contributions" : 4
+  }, {
+    "login" : "richardmiller",
+    "contributions" : 4
+  }, {
+    "login" : "fommil",
+    "contributions" : 4
+  }, {
+    "login" : "jcranky",
+    "contributions" : 4
+  }, {
+    "login" : "shadaj",
+    "contributions" : 4
+  }, {
+    "login" : "adamgfraser",
+    "contributions" : 4
+  }, {
+    "login" : "krasserm",
+    "contributions" : 4
+  }, {
+    "login" : "danslapman",
+    "contributions" : 4
+  }, {
+    "login" : "calvinbrown085",
+    "contributions" : 4
+  }, {
+    "login" : "jessitron",
+    "contributions" : 4
+  }, {
+    "login" : "mbaechler",
+    "contributions" : 4
+  }, {
+    "login" : "rtyley",
+    "contributions" : 4
+  }, {
+    "login" : "hamishdickson",
+    "contributions" : 4
+  }, {
+    "login" : "UlisesTorrella",
+    "contributions" : 4
+  }, {
+    "login" : "soumyarupsarkar",
+    "contributions" : 4
+  }, {
+    "login" : "gyfarkas-test",
+    "contributions" : 4
+  }, {
+    "login" : "erwan",
+    "contributions" : 4
+  }, {
+    "login" : "buntec",
+    "contributions" : 4
+  }, {
+    "login" : "sritchie-stripe",
+    "contributions" : 4
+  }, {
+    "login" : "martijnblankestijn",
+    "contributions" : 4
+  }, {
+    "login" : "mattroberts297",
+    "contributions" : 4
+  }, {
+    "login" : "mdedetrich",
+    "contributions" : 4
+  }, {
+    "login" : "r-glyde",
+    "contributions" : 4
+  }, {
+    "login" : "longcao",
+    "contributions" : 4
+  }, {
+    "login" : "almendar",
+    "contributions" : 4
+  }, {
+    "login" : "hugo-vrijswijk",
+    "contributions" : 4
+  }, {
+    "login" : "note",
+    "contributions" : 4
+  }, {
+    "login" : "vlovgr",
+    "contributions" : 4
+  }, {
+    "login" : "allcontributors[bot]",
+    "contributions" : 4
+  }, {
+    "login" : "adamnfish",
+    "contributions" : 4
+  }, {
+    "login" : "melrief",
+    "contributions" : 4
+  }, {
+    "login" : "asachdeva",
+    "contributions" : 4
+  }, {
+    "login" : "dmitriibundin",
+    "contributions" : 4
+  }, {
+    "login" : "sideeffffect",
+    "contributions" : 4
+  }, {
+    "login" : "gruggiero",
+    "contributions" : 4
+  }, {
+    "login" : "ngbinh",
+    "contributions" : 4
+  }, {
+    "login" : "bfdes",
+    "contributions" : 4
+  }, {
+    "login" : "homycdev",
+    "contributions" : 4
+  }, {
+    "login" : "leusgalvan",
+    "contributions" : 4
+  }, {
+    "login" : "implmnt",
+    "contributions" : 4
+  }, {
+    "login" : "jooohn",
+    "contributions" : 4
+  }, {
+    "login" : "SimY4",
+    "contributions" : 4
+  }, {
+    "login" : "lhns",
+    "contributions" : 4
+  }, {
+    "login" : "martin1keogh",
+    "contributions" : 4
+  }, {
+    "login" : "sjrd",
+    "contributions" : 4
+  }, {
+    "login" : "lambdista",
+    "contributions" : 4
+  }, {
+    "login" : "agourlay",
+    "contributions" : 4
+  }, {
+    "login" : "tbje",
+    "contributions" : 3
+  }, {
+    "login" : "jsuereth",
+    "contributions" : 3
+  }, {
+    "login" : "geoffreytchew",
+    "contributions" : 3
+  }, {
+    "login" : "Atry",
+    "contributions" : 3
+  }, {
+    "login" : "m-sp",
+    "contributions" : 3
+  }, {
+    "login" : "s5bug",
+    "contributions" : 3
+  }, {
+    "login" : "d1skort",
+    "contributions" : 3
+  }, {
+    "login" : "tel",
+    "contributions" : 3
+  }, {
+    "login" : "ctongfei",
+    "contributions" : 3
+  }, {
+    "login" : "lukestephenson",
+    "contributions" : 3
+  }, {
+    "login" : "r0estir0bbe",
+    "contributions" : 3
+  }, {
+    "login" : "MaxWorgan",
+    "contributions" : 3
+  }, {
+    "login" : "folone",
+    "contributions" : 3
+  }, {
+    "login" : "justjoheinz",
+    "contributions" : 3
+  }, {
+    "login" : "channingwalton",
+    "contributions" : 3
+  }, {
+    "login" : "mattkohl",
+    "contributions" : 3
+  }, {
+    "login" : "carpetscheme",
+    "contributions" : 3
+  }, {
+    "login" : "abhishekshree",
+    "contributions" : 3
+  }, {
+    "login" : "lucidd",
+    "contributions" : 3
+  }, {
+    "login" : "pjfanning",
+    "contributions" : 3
+  }, {
+    "login" : "xerial",
+    "contributions" : 3
+  }, {
+    "login" : "propensive",
+    "contributions" : 3
+  }, {
+    "login" : "sungiant",
+    "contributions" : 3
+  }, {
+    "login" : "rssh",
+    "contributions" : 3
+  }, {
+    "login" : "viktorklang",
+    "contributions" : 3
+  }, {
+    "login" : "leandrob13",
+    "contributions" : 3
+  }, {
+    "login" : "derekjw",
+    "contributions" : 3
+  }, {
+    "login" : "hejfelix",
+    "contributions" : 3
+  }, {
+    "login" : "jordiolivares",
+    "contributions" : 3
+  }, {
+    "login" : "oskin1",
+    "contributions" : 3
+  }, {
+    "login" : "prova",
+    "contributions" : 3
+  }, {
+    "login" : "msosnicki",
+    "contributions" : 3
+  }, {
+    "login" : "froth",
+    "contributions" : 3
+  }, {
+    "login" : "pjan",
+    "contributions" : 3
+  }, {
+    "login" : "kadzuya",
+    "contributions" : 3
+  }, {
+    "login" : "jedws",
+    "contributions" : 3
+  }, {
+    "login" : "rehanone",
+    "contributions" : 3
+  }, {
+    "login" : "vquintin",
+    "contributions" : 3
+  }, {
+    "login" : "gstro",
+    "contributions" : 3
+  }, {
+    "login" : "vasiliybondarenko",
+    "contributions" : 3
+  }, {
+    "login" : "buzden",
+    "contributions" : 3
+  }, {
+    "login" : "robotsnowfall",
+    "contributions" : 3
+  }, {
+    "login" : "thyandrecardoso",
+    "contributions" : 3
+  }, {
+    "login" : "PeterPerhac",
+    "contributions" : 3
+  }, {
+    "login" : "j3h",
+    "contributions" : 3
+  }, {
+    "login" : "mraulim",
+    "contributions" : 3
+  }, {
+    "login" : "brs96",
+    "contributions" : 3
+  }, {
+    "login" : "marcodippy",
+    "contributions" : 3
+  }, {
+    "login" : "mkhl",
+    "contributions" : 3
+  }, {
+    "login" : "valydia",
+    "contributions" : 3
+  }, {
+    "login" : "neko-kai",
+    "contributions" : 3
+  }, {
+    "login" : "nevillelyh",
+    "contributions" : 3
+  }, {
+    "login" : "ayoub-benali",
+    "contributions" : 3
+  }, {
+    "login" : "He-Pin",
+    "contributions" : 3
+  }, {
+    "login" : "slice",
+    "contributions" : 3
+  }, {
+    "login" : "RobinJDCox",
+    "contributions" : 3
+  }, {
+    "login" : "macalinao",
+    "contributions" : 3
+  }, {
+    "login" : "PhilipAxelrod",
+    "contributions" : 3
+  }, {
+    "login" : "timo-schmid",
+    "contributions" : 3
+  }, {
+    "login" : "CristinaHG",
+    "contributions" : 3
+  }, {
+    "login" : "TobiasRoland",
+    "contributions" : 3
+  }, {
+    "login" : "keuhdall",
+    "contributions" : 3
+  }, {
+    "login" : "conniec",
+    "contributions" : 3
+  }, {
+    "login" : "hrhino",
+    "contributions" : 3
+  }, {
+    "login" : "gflanagan",
+    "contributions" : 3
+  }, {
+    "login" : "Obarros",
+    "contributions" : 3
+  }, {
+    "login" : "tomiwu",
+    "contributions" : 3
+  }, {
+    "login" : "zarthross",
+    "contributions" : 3
+  }, {
+    "login" : "bkirwi",
+    "contributions" : 3
+  }, {
+    "login" : "Grogs",
+    "contributions" : 3
+  }, {
+    "login" : "ghostdogpr",
+    "contributions" : 3
+  }, {
+    "login" : "rkrzewski",
+    "contributions" : 3
+  }, {
+    "login" : "dreadedsoftware",
+    "contributions" : 3
+  }, {
+    "login" : "matwojcik",
+    "contributions" : 3
+  }, {
+    "login" : "jiminhsieh",
+    "contributions" : 3
+  }, {
+    "login" : "pgrandjean",
+    "contributions" : 3
+  }, {
+    "login" : "fagossa",
+    "contributions" : 3
+  }, {
+    "login" : "andimiller",
+    "contributions" : 3
+  }, {
+    "login" : "angelo-streetcontxt",
+    "contributions" : 3
+  }, {
+    "login" : "kazchimo",
+    "contributions" : 3
+  }, {
+    "login" : "ingarabr",
+    "contributions" : 3
+  }, {
+    "login" : "davidabrahams",
+    "contributions" : 3
+  }, {
+    "login" : "cornerman",
+    "contributions" : 2
+  }, {
+    "login" : "davesmith00000",
+    "contributions" : 2
+  }, {
+    "login" : "ktonga",
+    "contributions" : 2
+  }, {
+    "login" : "rzeigler",
+    "contributions" : 2
+  }, {
+    "login" : "road21",
+    "contributions" : 2
+  }, {
+    "login" : "typelevel-bot",
+    "contributions" : 2
+  }, {
+    "login" : "kczulko",
+    "contributions" : 2
+  }, {
+    "login" : "RawToast",
+    "contributions" : 2
+  }, {
+    "login" : "therealcisse",
+    "contributions" : 2
+  }, {
+    "login" : "poliez",
+    "contributions" : 2
+  }, {
+    "login" : "binkabir",
+    "contributions" : 2
+  }, {
+    "login" : "artemkorsakov",
+    "contributions" : 2
+  }, {
+    "login" : "youta32449999",
+    "contributions" : 2
+  }, {
+    "login" : "denisftw",
+    "contributions" : 2
+  }, {
+    "login" : "ppurang",
+    "contributions" : 2
+  }, {
+    "login" : "fdietze",
+    "contributions" : 2
+  }, {
+    "login" : "dispalt",
+    "contributions" : 2
+  }, {
+    "login" : "flaviut",
+    "contributions" : 2
+  }, {
+    "login" : "alexeyr",
+    "contributions" : 2
+  }, {
+    "login" : "labra",
+    "contributions" : 2
+  }, {
+    "login" : "rrjohnson",
+    "contributions" : 2
+  }, {
+    "login" : "akopich",
+    "contributions" : 2
+  }, {
+    "login" : "richardmiller-zz",
+    "contributions" : 2
+  }, {
+    "login" : "atnoya",
+    "contributions" : 2
+  }, {
+    "login" : "VladKopanev",
+    "contributions" : 2
+  }, {
+    "login" : "markmarch",
+    "contributions" : 2
+  }, {
+    "login" : "seanparsons",
+    "contributions" : 2
+  }, {
+    "login" : "cvogt",
+    "contributions" : 2
+  }, {
+    "login" : "dsmatter",
+    "contributions" : 2
+  }, {
+    "login" : "fmsbeekmans",
+    "contributions" : 2
+  }, {
+    "login" : "anatoliykmetyuk",
+    "contributions" : 2
+  }, {
+    "login" : "cogpp",
+    "contributions" : 2
+  }, {
+    "login" : "sirthias",
+    "contributions" : 2
+  }, {
+    "login" : "psung",
+    "contributions" : 2
+  }, {
+    "login" : "KristianAN",
+    "contributions" : 2
+  }, {
+    "login" : "RustedBones",
+    "contributions" : 2
+  }, {
+    "login" : "ryanberckmans",
+    "contributions" : 2
+  }, {
+    "login" : "dariuszpm",
+    "contributions" : 2
+  }, {
+    "login" : "amumurst",
+    "contributions" : 2
+  }, {
+    "login" : "yangzai",
+    "contributions" : 2
+  }, {
+    "login" : "jmgimeno",
+    "contributions" : 2
+  }, {
+    "login" : "arturaz",
+    "contributions" : 2
+  }, {
+    "login" : "YuvalItzchakov",
+    "contributions" : 2
+  }, {
+    "login" : "geirolz",
+    "contributions" : 2
+  }, {
+    "login" : "adrian-salajan",
+    "contributions" : 2
+  }, {
+    "login" : "sammthomson",
+    "contributions" : 2
+  }, {
+    "login" : "hosamaly",
+    "contributions" : 2
+  }, {
+    "login" : "swalker2m",
+    "contributions" : 2
+  }, {
+    "login" : "mcgizzle",
+    "contributions" : 2
+  }, {
+    "login" : "zakolenko",
+    "contributions" : 2
+  }, {
+    "login" : "arashi01",
+    "contributions" : 2
+  }, {
+    "login" : "fcanedo",
+    "contributions" : 2
+  }, {
+    "login" : "MasseGuillaume",
+    "contributions" : 2
+  }, {
+    "login" : "barnardb",
+    "contributions" : 2
+  }, {
+    "login" : "ashleymercer",
+    "contributions" : 2
+  }, {
+    "login" : "Hydrotoast",
+    "contributions" : 2
+  }, {
+    "login" : "avakhrenev",
+    "contributions" : 2
+  }, {
+    "login" : "michludw",
+    "contributions" : 2
+  }, {
+    "login" : "andrelfpinto",
+    "contributions" : 2
+  }, {
+    "login" : "lukaszwawrzyk",
+    "contributions" : 2
+  }, {
+    "login" : "CaringDev",
+    "contributions" : 2
+  }, {
+    "login" : "yoohaemin",
+    "contributions" : 2
+  }, {
+    "login" : "amir",
+    "contributions" : 2
+  }, {
+    "login" : "vkostyukov",
+    "contributions" : 2
+  }, {
+    "login" : "raymondtay",
+    "contributions" : 2
+  }, {
+    "login" : "slamdata-bot",
+    "contributions" : 2
+  }, {
+    "login" : "shagoon",
+    "contributions" : 2
+  }, {
+    "login" : "rmehri01",
+    "contributions" : 2
+  }, {
+    "login" : "tscholak",
+    "contributions" : 2
+  }, {
+    "login" : "rsoeldner",
+    "contributions" : 2
+  }, {
+    "login" : "chuwy",
+    "contributions" : 2
+  }, {
+    "login" : "jwojnowski",
+    "contributions" : 2
+  }, {
+    "login" : "justcoon",
+    "contributions" : 2
+  }, {
+    "login" : "bcarter97",
+    "contributions" : 2
+  }, {
+    "login" : "Michaelt293",
+    "contributions" : 2
+  }, {
+    "login" : "simonxikun",
+    "contributions" : 2
+  }, {
+    "login" : "mt40",
+    "contributions" : 2
+  }, {
+    "login" : "astiob",
+    "contributions" : 2
+  }, {
+    "login" : "psilospore",
+    "contributions" : 2
+  }, {
+    "login" : "DaveDeCaprio",
+    "contributions" : 2
+  }, {
+    "login" : "emilhotkowski",
+    "contributions" : 2
+  }, {
+    "login" : "fedefernandez",
+    "contributions" : 2
+  }, {
+    "login" : "ymasory",
+    "contributions" : 2
+  }, {
+    "login" : "clhodapp",
+    "contributions" : 2
+  }, {
+    "login" : "dseer0",
+    "contributions" : 2
+  }, {
+    "login" : "xplosunn",
+    "contributions" : 2
+  }, {
+    "login" : "Twizty",
+    "contributions" : 2
+  }, {
+    "login" : "fredfp",
+    "contributions" : 2
+  }, {
+    "login" : "dvic",
+    "contributions" : 2
+  }, {
+    "login" : "israelperezglez",
+    "contributions" : 2
+  }, {
+    "login" : "xjurko",
+    "contributions" : 2
+  }, {
+    "login" : "IRasmivan",
+    "contributions" : 2
+  }, {
+    "login" : "Masynchin",
+    "contributions" : 2
+  }, {
+    "login" : "jozic",
+    "contributions" : 2
+  }, {
+    "login" : "Ttcao",
+    "contributions" : 2
+  }, {
+    "login" : "chunjef",
+    "contributions" : 2
+  }, {
+    "login" : "soc",
+    "contributions" : 2
+  }, {
+    "login" : "rsekulski",
+    "contributions" : 2
+  }, {
+    "login" : "EstebanMarin",
+    "contributions" : 2
+  }, {
+    "login" : "kluen",
+    "contributions" : 2
+  }, {
+    "login" : "Crossy147",
+    "contributions" : 2
+  }, {
+    "login" : "marcelbuesing",
+    "contributions" : 2
+  }, {
+    "login" : "everson",
+    "contributions" : 2
+  }, {
+    "login" : "ShapelessCat",
+    "contributions" : 2
+  }, {
+    "login" : "henricook",
+    "contributions" : 2
+  }, {
+    "login" : "gerferra",
+    "contributions" : 2
+  }, {
+    "login" : "philwills",
+    "contributions" : 2
+  }, {
+    "login" : "ritschwumm",
+    "contributions" : 2
+  }, {
+    "login" : "pocketberserker",
+    "contributions" : 2
+  }, {
+    "login" : "axlelang",
+    "contributions" : 2
+  }, {
+    "login" : "culturedsys",
+    "contributions" : 2
+  }, {
+    "login" : "pera",
+    "contributions" : 2
+  }, {
+    "login" : "marcin-rzeznicki",
+    "contributions" : 2
+  }, {
+    "login" : "jilen",
+    "contributions" : 2
+  }, {
+    "login" : "battermann",
+    "contributions" : 2
+  }, {
+    "login" : "xeno-by",
+    "contributions" : 2
+  }, {
+    "login" : "limansky",
+    "contributions" : 2
+  }, {
+    "login" : "arron-green",
+    "contributions" : 2
+  }, {
+    "login" : "felixmulder",
+    "contributions" : 2
+  }, {
+    "login" : "strong-zero",
+    "contributions" : 2
+  }, {
+    "login" : "JakubSroka",
+    "contributions" : 2
+  }, {
+    "login" : "DylanArnold",
+    "contributions" : 2
+  }, {
+    "login" : "vikraman",
+    "contributions" : 2
+  }, {
+    "login" : "rossetd0",
+    "contributions" : 2
+  }, {
+    "login" : "jtjeferreira",
+    "contributions" : 2
+  }, {
+    "login" : "balthz",
+    "contributions" : 2
+  }, {
+    "login" : "LMnet",
+    "contributions" : 2
+  }, {
+    "login" : "hmemcpy",
+    "contributions" : 2
+  }, {
+    "login" : "ekrich",
+    "contributions" : 2
+  }, {
+    "login" : "fabianhjr",
+    "contributions" : 2
+  }, {
+    "login" : "wjlow",
+    "contributions" : 2
+  }, {
+    "login" : "xavier-fernandez",
+    "contributions" : 2
+  }, {
+    "login" : "ksonj",
+    "contributions" : 2
+  }, {
+    "login" : "matsluni",
+    "contributions" : 2
+  }, {
+    "login" : "robinske",
+    "contributions" : 2
+  }, {
+    "login" : "brbrown25",
+    "contributions" : 2
+  }, {
+    "login" : "mscharley",
+    "contributions" : 2
+  }, {
+    "login" : "sbrunk",
+    "contributions" : 2
+  }, {
+    "login" : "busti",
+    "contributions" : 2
+  }, {
+    "login" : "alexeygorobets",
+    "contributions" : 2
+  }, {
+    "login" : "amohrland",
+    "contributions" : 2
+  }, {
+    "login" : "LeifW",
+    "contributions" : 2
+  }, {
+    "login" : "drbild",
+    "contributions" : 2
+  }, {
+    "login" : "tabdulradi",
+    "contributions" : 2
+  }, {
+    "login" : "sloshy",
+    "contributions" : 2
+  }, {
+    "login" : "vejeta",
+    "contributions" : 2
+  }, {
+    "login" : "semenodm",
+    "contributions" : 2
+  }, {
+    "login" : "nikitapecasa",
+    "contributions" : 2
+  }, {
+    "login" : "timbess",
+    "contributions" : 2
+  }, {
+    "login" : "agajek",
+    "contributions" : 2
+  }, {
+    "login" : "combinatorist",
+    "contributions" : 2
+  }, {
+    "login" : "mgttlinger",
+    "contributions" : 2
+  }, {
+    "login" : "licentious",
+    "contributions" : 2
+  }, {
+    "login" : "mvalle",
+    "contributions" : 2
+  }, {
+    "login" : "ssahayam-zd",
+    "contributions" : 2
+  }, {
+    "login" : "kiambogo",
+    "contributions" : 2
+  }, {
+    "login" : "evis",
+    "contributions" : 2
+  }, {
+    "login" : "Kirill5k",
+    "contributions" : 2
+  }, {
+    "login" : "pchpsky",
+    "contributions" : 2
+  }, {
+    "login" : "estsauver",
+    "contributions" : 2
+  }, {
+    "login" : "falconepl",
+    "contributions" : 2
+  }, {
+    "login" : "peterbecich",
+    "contributions" : 2
+  }, {
+    "login" : "exlevan",
+    "contributions" : 2
+  }, {
+    "login" : "nornagon",
+    "contributions" : 2
+  }, {
+    "login" : "aloiscochard",
+    "contributions" : 2
+  }, {
+    "login" : "eli-jordan",
+    "contributions" : 2
+  }, {
+    "login" : "tapmania",
+    "contributions" : 2
+  }, {
+    "login" : "gheine",
+    "contributions" : 2
+  }, {
+    "login" : "endertunc",
+    "contributions" : 2
+  }, {
+    "login" : "ReadmeCritic",
+    "contributions" : 2
+  }, {
+    "login" : "MaT1g3R",
+    "contributions" : 2
+  }, {
+    "login" : "aoiroaoino",
+    "contributions" : 2
+  }, {
+    "login" : "waffle-iron",
+    "contributions" : 2
+  }, {
+    "login" : "barryoneill",
+    "contributions" : 2
+  }, {
+    "login" : "pleira",
+    "contributions" : 2
+  }, {
+    "login" : "zhongl",
+    "contributions" : 2
+  }, {
+    "login" : "akonior",
+    "contributions" : 2
+  }, {
+    "login" : "davecromberge",
+    "contributions" : 1
+  }, {
+    "login" : "LightSystem",
+    "contributions" : 1
+  }, {
+    "login" : "txsmith",
+    "contributions" : 1
+  }, {
+    "login" : "poslegm",
+    "contributions" : 1
+  }, {
+    "login" : "ubaldop",
+    "contributions" : 1
+  }, {
+    "login" : "mchv",
+    "contributions" : 1
+  }, {
+    "login" : "kkalavantavanich",
+    "contributions" : 1
+  }, {
+    "login" : "fosskers",
+    "contributions" : 1
+  }, {
+    "login" : "jgogstad",
+    "contributions" : 1
+  }, {
+    "login" : "mkotsbakws",
+    "contributions" : 1
+  }, {
+    "login" : "ag91",
+    "contributions" : 1
+  }, {
+    "login" : "LaurenceWarne",
+    "contributions" : 1
+  }, {
+    "login" : "colin-m-davis",
+    "contributions" : 1
+  }, {
+    "login" : "joshlemer",
+    "contributions" : 1
+  }, {
+    "login" : "RonanCamargo",
+    "contributions" : 1
+  }, {
+    "login" : "suzannehamilton",
+    "contributions" : 1
+  }, {
+    "login" : "barisAtmn",
+    "contributions" : 1
+  }, {
+    "login" : "sebastianvoss",
+    "contributions" : 1
+  }, {
+    "login" : "Passarinho4",
+    "contributions" : 1
+  }, {
+    "login" : "gabrieljones",
+    "contributions" : 1
+  }, {
+    "login" : "henryxparker",
+    "contributions" : 1
+  }, {
+    "login" : "sksamuel",
+    "contributions" : 1
+  }, {
+    "login" : "ysusuk",
+    "contributions" : 1
+  }, {
+    "login" : "taisukeoe",
+    "contributions" : 1
+  }, {
+    "login" : "Bunyod",
+    "contributions" : 1
+  }, {
+    "login" : "dk14",
+    "contributions" : 1
+  }, {
+    "login" : "wibisono",
+    "contributions" : 1
+  }, {
+    "login" : "mslinn",
+    "contributions" : 1
+  }, {
+    "login" : "ryangreenberg",
+    "contributions" : 1
+  }, {
+    "login" : "daytimewind",
+    "contributions" : 1
+  }, {
+    "login" : "esarbe",
+    "contributions" : 1
+  }, {
+    "login" : "rcdmrl",
+    "contributions" : 1
+  }, {
+    "login" : "ChidiRnweke",
+    "contributions" : 1
+  }, {
+    "login" : "ex0ns",
+    "contributions" : 1
+  }, {
+    "login" : "pranshubhatnagar",
+    "contributions" : 1
+  }, {
+    "login" : "KevinBoyette",
+    "contributions" : 1
+  }, {
+    "login" : "visox",
+    "contributions" : 1
+  }, {
+    "login" : "marcesquerra",
+    "contributions" : 1
+  }, {
+    "login" : "gurinderu",
+    "contributions" : 1
+  }, {
+    "login" : "markusa380",
+    "contributions" : 1
+  }, {
+    "login" : "steinybot",
+    "contributions" : 1
+  }, {
+    "login" : "nikita12100",
+    "contributions" : 1
+  }, {
+    "login" : "yyy1000",
+    "contributions" : 1
+  }, {
+    "login" : "jkachmar",
+    "contributions" : 1
+  }, {
+    "login" : "ArulselvanMadhavan",
+    "contributions" : 1
+  }, {
+    "login" : "Tvaroh",
+    "contributions" : 1
+  }, {
+    "login" : "moradology",
+    "contributions" : 1
+  }, {
+    "login" : "bmbferreira",
+    "contributions" : 1
+  }, {
+    "login" : "jachro",
+    "contributions" : 1
+  }, {
+    "login" : "desbo",
+    "contributions" : 1
+  }, {
+    "login" : "cosmin33",
+    "contributions" : 1
+  }, {
+    "login" : "easel",
+    "contributions" : 1
+  }, {
+    "login" : "ezhulenev",
+    "contributions" : 1
+  }, {
+    "login" : "chaitanyawaikar",
+    "contributions" : 1
+  }, {
+    "login" : "lukecollier",
+    "contributions" : 1
+  }, {
+    "login" : "eigenvariable",
+    "contributions" : 1
+  }, {
+    "login" : "donaldosalas",
+    "contributions" : 1
+  }, {
+    "login" : "dincamihai",
+    "contributions" : 1
+  }, {
+    "login" : "michelspeiser",
+    "contributions" : 1
+  }, {
+    "login" : "Unisay",
+    "contributions" : 1
+  }, {
+    "login" : "kschwarz1116",
+    "contributions" : 1
+  }, {
+    "login" : "sid-kap",
+    "contributions" : 1
+  }, {
+    "login" : "bashimao",
+    "contributions" : 1
+  }, {
+    "login" : "cwmyers",
+    "contributions" : 1
+  }, {
+    "login" : "darksniper87",
+    "contributions" : 1
+  }, {
+    "login" : "xiaohk",
+    "contributions" : 1
+  }, {
+    "login" : "j-keck",
+    "contributions" : 1
+  }, {
+    "login" : "ntnj",
+    "contributions" : 1
+  }, {
+    "login" : "ScalaWilliam",
+    "contributions" : 1
+  }, {
+    "login" : "srp",
+    "contributions" : 1
+  }, {
+    "login" : "rdesgroppes",
+    "contributions" : 1
+  }, {
+    "login" : "atanana",
+    "contributions" : 1
+  }, {
+    "login" : "flipp5b",
+    "contributions" : 1
+  }, {
+    "login" : "ryanpbrewster",
+    "contributions" : 1
+  }, {
+    "login" : "Duhemm",
+    "contributions" : 1
+  }, {
+    "login" : "JakubSzczerbinski",
+    "contributions" : 1
+  }, {
+    "login" : "mpurins",
+    "contributions" : 1
+  }, {
+    "login" : "bio-aeon",
+    "contributions" : 1
+  }, {
+    "login" : "wasowski",
+    "contributions" : 1
+  }, {
+    "login" : "hanny24",
+    "contributions" : 1
+  }, {
+    "login" : "berndlosert",
+    "contributions" : 1
+  }, {
+    "login" : "pishen",
+    "contributions" : 1
+  }, {
+    "login" : "cordarei",
+    "contributions" : 1
+  }, {
+    "login" : "danielkarch",
+    "contributions" : 1
+  }, {
+    "login" : "DomBlack",
+    "contributions" : 1
+  }, {
+    "login" : "htmldoug",
+    "contributions" : 1
+  }, {
+    "login" : "hjmeijer",
+    "contributions" : 1
+  }, {
+    "login" : "agadek",
+    "contributions" : 1
+  }, {
+    "login" : "mrcmatuszak",
+    "contributions" : 1
+  }, {
+    "login" : "LydiaSkuse",
+    "contributions" : 1
+  }, {
+    "login" : "martinlechner1",
+    "contributions" : 1
+  }, {
+    "login" : "eikek",
+    "contributions" : 1
+  }, {
+    "login" : "niij",
+    "contributions" : 1
+  }, {
+    "login" : "teigen",
+    "contributions" : 1
+  }, {
+    "login" : "gekomad",
+    "contributions" : 1
+  }, {
+    "login" : "rbraley",
+    "contributions" : 1
+  }, {
+    "login" : "jackcviers",
+    "contributions" : 1
+  }, {
+    "login" : "kamushin",
+    "contributions" : 1
+  }, {
+    "login" : "L7R7",
+    "contributions" : 1
+  }, {
+    "login" : "bjing",
+    "contributions" : 1
+  }, {
+    "login" : "andrewkerrqb",
+    "contributions" : 1
+  }, {
+    "login" : "fanf",
+    "contributions" : 1
+  }, {
+    "login" : "kklorenzotesta",
+    "contributions" : 1
+  }, {
+    "login" : "trobert",
+    "contributions" : 1
+  }, {
+    "login" : "mtsokol",
+    "contributions" : 1
+  }, {
+    "login" : "khernyo",
+    "contributions" : 1
+  }, {
+    "login" : "carymrobbins",
+    "contributions" : 1
+  }, {
+    "login" : "titorenko",
+    "contributions" : 1
+  }, {
+    "login" : "marcobattaglia",
+    "contributions" : 1
+  }, {
+    "login" : "chenharryhua",
+    "contributions" : 1
+  }, {
+    "login" : "albertpastrana",
+    "contributions" : 1
+  }, {
+    "login" : "dwickern",
+    "contributions" : 1
+  }, {
+    "login" : "izeigerman",
+    "contributions" : 1
+  }, {
+    "login" : "JSchwerberg",
+    "contributions" : 1
+  }, {
+    "login" : "XeeD",
+    "contributions" : 1
+  }, {
+    "login" : "jamonkko",
+    "contributions" : 1
+  }, {
+    "login" : "eddsteel",
+    "contributions" : 1
+  }, {
+    "login" : "weipingc",
+    "contributions" : 1
+  }, {
+    "login" : "Gryfit",
+    "contributions" : 1
+  }, {
+    "login" : "wjoel",
+    "contributions" : 1
+  }, {
+    "login" : "Gor-Ren",
+    "contributions" : 1
+  }, {
+    "login" : "kciesielski",
+    "contributions" : 1
+  }, {
+    "login" : "jchapuis",
+    "contributions" : 1
+  }, {
+    "login" : "danielrmeyer",
+    "contributions" : 1
+  }, {
+    "login" : "franbh",
+    "contributions" : 1
+  }, {
+    "login" : "matelaszlo",
+    "contributions" : 1
+  }, {
+    "login" : "floating-cat",
+    "contributions" : 1
+  }, {
+    "login" : "nikitaDanilenko",
+    "contributions" : 1
+  }, {
+    "login" : "NickMaksimenko",
+    "contributions" : 1
+  }, {
+    "login" : "choedl",
+    "contributions" : 1
+  }, {
+    "login" : "dayyan",
+    "contributions" : 1
+  }, {
+    "login" : "pdobel",
+    "contributions" : 1
+  }, {
+    "login" : "kell18",
+    "contributions" : 1
+  }, {
+    "login" : "ben-healthforge",
+    "contributions" : 1
+  }, {
+    "login" : "exp0nge",
+    "contributions" : 1
+  }, {
+    "login" : "bstpierre",
+    "contributions" : 1
+  }, {
+    "login" : "Quafadas",
+    "contributions" : 1
+  }, {
+    "login" : "arinal",
+    "contributions" : 1
+  }, {
+    "login" : "skeet70",
+    "contributions" : 1
+  }, {
+    "login" : "lloydmeta",
+    "contributions" : 1
+  }, {
+    "login" : "quartin",
+    "contributions" : 1
+  }, {
+    "login" : "Marcus-Rosti",
+    "contributions" : 1
+  }, {
+    "login" : "TimoMeijer",
+    "contributions" : 1
+  }, {
+    "login" : "okapies",
+    "contributions" : 1
+  }, {
+    "login" : "lodamar",
+    "contributions" : 1
+  }, {
+    "login" : "Madder",
+    "contributions" : 1
+  }, {
+    "login" : "nafg",
+    "contributions" : 1
+  }, {
+    "login" : "jlopez",
+    "contributions" : 1
+  }, {
+    "login" : "shanethehat",
+    "contributions" : 1
+  }, {
+    "login" : "allantl",
+    "contributions" : 1
+  }, {
+    "login" : "2m",
+    "contributions" : 1
+  }, {
+    "login" : "m-combinator",
+    "contributions" : 1
+  }, {
+    "login" : "mayonesa",
+    "contributions" : 1
+  }, {
+    "login" : "softprops",
+    "contributions" : 1
+  }, {
+    "login" : "ochrons",
+    "contributions" : 1
+  }, {
+    "login" : "nrinaudo",
+    "contributions" : 1
+  }, {
+    "login" : "dotta",
+    "contributions" : 1
+  }, {
+    "login" : "bedux",
+    "contributions" : 1
+  }, {
+    "login" : "envilogger",
+    "contributions" : 1
+  }, {
+    "login" : "rusucosmin",
+    "contributions" : 1
+  }, {
+    "login" : "augustjune",
+    "contributions" : 1
+  }, {
+    "login" : "JoeWrightss",
+    "contributions" : 1
+  }, {
+    "login" : "timvw",
+    "contributions" : 1
+  }, {
+    "login" : "eparejatobes",
+    "contributions" : 1
+  }, {
+    "login" : "lossyrob",
+    "contributions" : 1
+  }, {
+    "login" : "stacycurl",
+    "contributions" : 1
+  }, {
+    "login" : "mainali123",
+    "contributions" : 1
+  }, {
+    "login" : "camilosampedro",
+    "contributions" : 1
+  }, {
+    "login" : "dependabot-preview[bot]",
+    "contributions" : 1
+  }, {
+    "login" : "matkob",
+    "contributions" : 1
+  }, {
+    "login" : "Tapped",
+    "contributions" : 1
+  }, {
+    "login" : "kazzna",
+    "contributions" : 1
+  }, {
+    "login" : "ckipp01",
+    "contributions" : 1
+  }, {
+    "login" : "leachbj",
+    "contributions" : 1
+  }, {
+    "login" : "mkotsbak",
+    "contributions" : 1
+  }, {
+    "login" : "akiomik",
+    "contributions" : 1
+  }, {
+    "login" : "fahadsiddiqui",
+    "contributions" : 1
+  }, {
+    "login" : "markhibberd",
+    "contributions" : 1
+  }, {
+    "login" : "alonsodomin",
+    "contributions" : 1
+  }, {
+    "login" : "waywardmonkeys",
+    "contributions" : 1
+  }, {
+    "login" : "emchristiansen",
+    "contributions" : 1
+  }, {
+    "login" : "pinguinson",
+    "contributions" : 1
+  }, {
+    "login" : "FranklinChen",
+    "contributions" : 1
+  }, {
+    "login" : "pvillega",
+    "contributions" : 1
+  }, {
+    "login" : "Immozentral",
+    "contributions" : 1
+  }, {
+    "login" : "geirhedemark",
+    "contributions" : 1
+  }, {
+    "login" : "davidallsopp",
+    "contributions" : 1
+  }, {
+    "login" : "andreamarcolin",
+    "contributions" : 1
+  }, {
+    "login" : "alexandrnikitin",
+    "contributions" : 1
+  }, {
+    "login" : "fedragon",
+    "contributions" : 1
+  }, {
+    "login" : "blaz-kranjc",
+    "contributions" : 1
+  }, {
+    "login" : "Swoorup",
+    "contributions" : 1
+  }, {
+    "login" : "DanielaSfregola",
+    "contributions" : 1
+  }, {
+    "login" : "letalvoj",
+    "contributions" : 1
+  }, {
+    "login" : "hntd187",
+    "contributions" : 1
+  }, {
+    "login" : "gokyo",
+    "contributions" : 1
+  }, {
+    "login" : "jdnavarro",
+    "contributions" : 1
+  }, {
+    "login" : "ajaychandran",
+    "contributions" : 1
+  }, {
+    "login" : "philipphoffmann",
+    "contributions" : 1
+  }, {
+    "login" : "dscleaver",
+    "contributions" : 1
+  }, {
+    "login" : "skennedy",
+    "contributions" : 1
+  }, {
+    "login" : "matlockx",
+    "contributions" : 1
+  }, {
+    "login" : "bthuillier",
+    "contributions" : 1
+  }, {
+    "login" : "joeyhage",
+    "contributions" : 1
+  }, {
+    "login" : "miklos-martin",
+    "contributions" : 1
+  }, {
+    "login" : "ccmtaylor",
+    "contributions" : 1
+  }, {
+    "login" : "bpg",
+    "contributions" : 1
+  }, {
+    "login" : "atais",
+    "contributions" : 1
+  }, {
+    "login" : "relrod",
+    "contributions" : 1
+  }, {
+    "login" : "ankitson",
+    "contributions" : 1
+  }, {
+    "login" : "rvernica",
+    "contributions" : 1
+  }, {
+    "login" : "halcat0x15a",
+    "contributions" : 1
+  }, {
+    "login" : "ronanM",
+    "contributions" : 1
+  }, {
+    "login" : "ValdemarGr",
+    "contributions" : 1
+  }, {
+    "login" : "katlasik",
+    "contributions" : 1
+  }, {
+    "login" : "jgoday",
+    "contributions" : 1
+  }, {
+    "login" : "wojciechUrbanski",
+    "contributions" : 1
+  }, {
+    "login" : "mackenziestarr",
+    "contributions" : 1
+  }, {
+    "login" : "yoshinorin",
+    "contributions" : 1
+  }, {
+    "login" : "alexwei",
+    "contributions" : 1
+  }, {
+    "login" : "Steven0351",
+    "contributions" : 1
+  }, {
+    "login" : "NightRa",
+    "contributions" : 1
+  }, {
+    "login" : "dberg",
+    "contributions" : 1
+  }, {
+    "login" : "fabianhjr-dealengine",
+    "contributions" : 1
+  }, {
+    "login" : "miciek",
+    "contributions" : 1
+  }, {
+    "login" : "dchenbecker",
+    "contributions" : 1
+  }, {
+    "login" : "hakontro",
+    "contributions" : 1
+  }, {
+    "login" : "pgabara",
+    "contributions" : 1
+  }, {
+    "login" : "jrduncans",
+    "contributions" : 1
+  }, {
+    "login" : "densh",
+    "contributions" : 1
+  }, {
+    "login" : "geoffjohn11",
+    "contributions" : 1
+  }, {
+    "login" : "arnoldberlin",
+    "contributions" : 1
+  }, {
+    "login" : "Koroeskohr",
+    "contributions" : 1
+  }, {
+    "login" : "giabao",
+    "contributions" : 1
+  }, {
+    "login" : "YawarRaza7349",
+    "contributions" : 1
+  }, {
+    "login" : "mgdigital",
+    "contributions" : 1
+  }, {
+    "login" : "DanDecrypted",
+    "contributions" : 1
+  }, {
+    "login" : "sergeykolbasov",
+    "contributions" : 1
+  }, {
+    "login" : "andrethobu",
+    "contributions" : 1
+  }, {
+    "login" : "megri",
+    "contributions" : 1
+  }, {
+    "login" : "rossabaker-flake-steward[bot]",
+    "contributions" : 1
+  }, {
+    "login" : "fcabestre",
+    "contributions" : 1
+  }, {
+    "login" : "JLLeitschuh",
+    "contributions" : 1
+  }, {
+    "login" : "mgzuber",
+    "contributions" : 1
+  }, {
+    "login" : "ArturGajowy",
+    "contributions" : 1
+  }, {
+    "login" : "dieproht",
+    "contributions" : 1
+  }, {
+    "login" : "Jentsch",
+    "contributions" : 1
+  }, {
+    "login" : "tg44",
+    "contributions" : 1
+  }, {
+    "login" : "b-hass",
+    "contributions" : 1
+  }, {
+    "login" : "jupposessho",
+    "contributions" : 1
+  }, {
+    "login" : "msumner91",
+    "contributions" : 1
+  }, {
+    "login" : "calvellido",
+    "contributions" : 1
+  }, {
+    "login" : "EugeneLoy",
+    "contributions" : 1
+  }, {
+    "login" : "dcastro",
+    "contributions" : 1
+  }, {
+    "login" : "noti0na1",
+    "contributions" : 1
+  }, {
+    "login" : "msinton",
+    "contributions" : 1
+  }, {
+    "login" : "sirocchj",
+    "contributions" : 1
+  }, {
+    "login" : "peyerc",
+    "contributions" : 1
+  }, {
+    "login" : "eugeniasimich",
+    "contributions" : 1
+  }, {
+    "login" : "chiller",
+    "contributions" : 1
+  }, {
+    "login" : "oguzhanunlu",
+    "contributions" : 1
+  }, {
+    "login" : "acarrasco",
+    "contributions" : 1
+  }, {
+    "login" : "tlockney",
+    "contributions" : 1
+  }, {
+    "login" : "kcsongor",
+    "contributions" : 1
+  }, {
+    "login" : "alexarchambault",
+    "contributions" : 1
+  }, {
+    "login" : "SakulK",
+    "contributions" : 1
+  }, {
+    "login" : "som-snytt",
+    "contributions" : 1
+  }, {
+    "login" : "marcinzh",
+    "contributions" : 1
+  }, {
+    "login" : "ortex",
+    "contributions" : 1
+  }, {
+    "login" : "zsluedem",
+    "contributions" : 1
+  }, {
+    "login" : "xrtm000",
+    "contributions" : 1
+  }, {
+    "login" : "joprice",
+    "contributions" : 1
+  }, {
+    "login" : "gregor-i",
+    "contributions" : 1
+  }, {
+    "login" : "fvalka",
+    "contributions" : 1
+  }, {
+    "login" : "nightscape",
+    "contributions" : 1
+  }, {
+    "login" : "vincenzobaz",
+    "contributions" : 1
+  }, {
+    "login" : "kaplanbora",
+    "contributions" : 1
+  }, {
+    "login" : "snadorp",
+    "contributions" : 1
+  }, {
+    "login" : "amitayh",
+    "contributions" : 1
+  }, {
+    "login" : "michael-smith",
+    "contributions" : 1
+  }, {
+    "login" : "yannkaiser-asana",
+    "contributions" : 1
+  }, {
+    "login" : "eugene-sy",
+    "contributions" : 1
+  }, {
+    "login" : "d6y",
+    "contributions" : 1
+  }, {
+    "login" : "regis-leray",
+    "contributions" : 1
+  }, {
+    "login" : "darkiri",
+    "contributions" : 1
+  }, {
+    "login" : "lihaoyi",
+    "contributions" : 1
+  }, {
+    "login" : "mkubala",
+    "contributions" : 1
+  }, {
+    "login" : "ms-tg",
+    "contributions" : 1
+  }, {
+    "login" : "ivanlp10n2",
+    "contributions" : 1
+  }, {
+    "login" : "gblike",
+    "contributions" : 1
+  }, {
+    "login" : "martinstuder",
+    "contributions" : 1
+  }, {
+    "login" : "xanderdunn",
+    "contributions" : 1
+  }, {
+    "login" : "martinprobson",
+    "contributions" : 1
+  }, {
+    "login" : "IVaSmi",
+    "contributions" : 1
+  }, {
+    "login" : "tototoshi",
+    "contributions" : 1
+  }, {
+    "login" : "fredshonorio",
+    "contributions" : 1
+  }, {
+    "login" : "josephhajduk",
+    "contributions" : 1
+  }, {
+    "login" : "kubum",
+    "contributions" : 1
+  }, {
+    "login" : "kierendavies",
+    "contributions" : 1
+  }, {
+    "login" : "mossprescott",
+    "contributions" : 1
+  }, {
+    "login" : "BokChoyWarrior",
+    "contributions" : 1
+  }, {
+    "login" : "fixxer",
+    "contributions" : 1
+  }, {
+    "login" : "walesho",
+    "contributions" : 1
+  }, {
+    "login" : "leviramsey",
+    "contributions" : 1
+  }, {
+    "login" : "slemus9",
+    "contributions" : 1
+  }, {
+    "login" : "dlinov",
+    "contributions" : 1
+  }, {
+    "login" : "bfritz",
+    "contributions" : 1
+  }, {
+    "login" : "Sebruck",
+    "contributions" : 1
+  }, {
+    "login" : "ABHISHEK7",
+    "contributions" : 1
+  }, {
+    "login" : "aslesarenko",
+    "contributions" : 1
+  }, {
+    "login" : "jisantuc",
+    "contributions" : 1
+  }, {
+    "login" : "LPTK",
+    "contributions" : 1
+  }, {
+    "login" : "tovbinm",
+    "contributions" : 1
+  }, {
+    "login" : "jdegoes",
+    "contributions" : 1
+  }, {
+    "login" : "rmihael",
+    "contributions" : 1
+  }, {
+    "login" : "ProxyLiveSolutions",
+    "contributions" : 1
+  }, {
+    "login" : "aashish2054",
+    "contributions" : 1
+  }, {
+    "login" : "qwbarch",
+    "contributions" : 1
+  }, {
+    "login" : "AzuObs",
+    "contributions" : 1
+  }, {
+    "login" : "mikla",
+    "contributions" : 1
+  }, {
+    "login" : "Astrac",
+    "contributions" : 1
+  }, {
+    "login" : "tom-sturge",
+    "contributions" : 1
+  }, {
+    "login" : "emanresusername",
+    "contributions" : 1
+  }, {
+    "login" : "banshee",
+    "contributions" : 1
+  }, {
+    "login" : "bmc",
+    "contributions" : 1
+  }, {
+    "login" : "ms-ati",
+    "contributions" : 1
+  }, {
+    "login" : "Teinnsei",
+    "contributions" : 1
+  }, {
+    "login" : "cameo-js",
+    "contributions" : 1
+  }, {
+    "login" : "usommerl",
+    "contributions" : 1
+  }, {
+    "login" : "gaborbarna",
+    "contributions" : 1
+  }, {
+    "login" : "scubamaggo",
+    "contributions" : 1
+  }, {
+    "login" : "pocorall",
+    "contributions" : 1
+  }, {
+    "login" : "frroliveira",
+    "contributions" : 1
+  }, {
+    "login" : "jhzab",
+    "contributions" : 1
+  }, {
+    "login" : "mdimjasevic",
+    "contributions" : 1
+  }, {
+    "login" : "riccardocorbella",
+    "contributions" : 1
+  }, {
+    "login" : "bjaglin",
+    "contributions" : 1
+  }, {
+    "login" : "ehsun7b",
+    "contributions" : 1
+  }, {
+    "login" : "amuradyan",
+    "contributions" : 1
+  }, {
+    "login" : "stewSquared",
+    "contributions" : 1
+  }, {
+    "login" : "rudolmi",
+    "contributions" : 1
+  }, {
+    "login" : "d2a4u",
+    "contributions" : 1
+  }, {
+    "login" : "daniel-ciocirlan",
+    "contributions" : 1
+  }, {
+    "login" : "wlk",
+    "contributions" : 1
+  }, {
+    "login" : "vgrigoriu",
+    "contributions" : 1
+  }, {
+    "login" : "amast09",
+    "contributions" : 1
+  }, {
+    "login" : "hmrm",
+    "contributions" : 1
+  }, {
+    "login" : "luthfianto",
+    "contributions" : 1
+  }, {
+    "login" : "dos65",
+    "contributions" : 1
+  }, {
+    "login" : "3rdLaw",
+    "contributions" : 1
+  }, {
+    "login" : "siddhartha-gadgil",
+    "contributions" : 1
+  }, {
+    "login" : "sam-tombury",
+    "contributions" : 1
+  }, {
+    "login" : "hmrclt",
+    "contributions" : 1
+  }, {
+    "login" : "sallareznov",
+    "contributions" : 1
+  }, {
+    "login" : "mio-19",
+    "contributions" : 1
+  }, {
+    "login" : "Trundle",
+    "contributions" : 1
+  }, {
+    "login" : "robgarden",
+    "contributions" : 1
+  }, {
+    "login" : "lewisc2303",
+    "contributions" : 1
+  }, {
+    "login" : "jose-puente",
+    "contributions" : 1
+  }, {
+    "login" : "Andrea",
+    "contributions" : 1
+  }, {
+    "login" : "ashwinbhaskar",
+    "contributions" : 1
+  }, {
+    "login" : "mmynsted",
+    "contributions" : 1
+  }, {
+    "login" : "tkawachi",
+    "contributions" : 1
+  }, {
+    "login" : "janekdb",
+    "contributions" : 1
+  }, {
+    "login" : "cde1gado",
+    "contributions" : 1
+  }, {
+    "login" : "ZachFontenot",
+    "contributions" : 1
+  }, {
+    "login" : "fabianschmitthenner",
+    "contributions" : 1
+  }, {
+    "login" : "aki-ks",
+    "contributions" : 1
+  }, {
+    "login" : "robfitzgerald",
+    "contributions" : 1
+  }, {
+    "login" : "ochafik",
+    "contributions" : 1
+  }, {
+    "login" : "prakashkumar007",
+    "contributions" : 1
+  }, {
+    "login" : "jeffreyolchovy",
+    "contributions" : 1
+  }, {
+    "login" : "hayssams",
+    "contributions" : 1
+  }, {
+    "login" : "nefilim",
+    "contributions" : 1
+  }, {
+    "login" : "QuitHub",
+    "contributions" : 1
+  }, {
+    "login" : "vinayakpathak",
+    "contributions" : 1
+  }, {
+    "login" : "magnolia-k",
+    "contributions" : 1
+  }, {
+    "login" : "lightsaway",
+    "contributions" : 1
+  }, {
+    "login" : "jferris",
+    "contributions" : 1
+  }, {
+    "login" : "wheaties",
+    "contributions" : 1
+  }, {
+    "login" : "bbuchsbaum",
+    "contributions" : 1
+  }, {
+    "login" : "davidabrahams-stripe",
+    "contributions" : 1
+  }, {
+    "login" : "felher",
+    "contributions" : 1
+  }, {
+    "login" : "takapi327",
+    "contributions" : 1
+  }, {
+    "login" : "rolang",
+    "contributions" : 1
+  }, {
+    "login" : "sheunis",
+    "contributions" : 1
+  }, {
+    "login" : "REDNBLACK",
+    "contributions" : 1
+  }, {
+    "login" : "JMdoubleU",
+    "contributions" : 1
+  }, {
+    "login" : "civilizeddev",
+    "contributions" : 1
+  }, {
+    "login" : "ianohara",
+    "contributions" : 1
+  }, {
+    "login" : "alirezameskin",
+    "contributions" : 1
+  }, {
+    "login" : "yhylord",
+    "contributions" : 1
+  }, {
+    "login" : "stephennancekivell",
+    "contributions" : 1
+  }, {
+    "login" : "mbbx6spp",
+    "contributions" : 1
+  }, {
+    "login" : "jrozanski",
+    "contributions" : 1
+  }, {
+    "login" : "DenisNovac",
+    "contributions" : 1
+  }, {
+    "login" : "mtrna",
+    "contributions" : 1
+  }, {
+    "login" : "stsatlantis",
+    "contributions" : 1
+  }, {
+    "login" : "fnandot",
+    "contributions" : 1
+  } ]
+}

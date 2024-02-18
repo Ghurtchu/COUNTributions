@@ -65,6 +65,32 @@ object Main extends IOApp.Simple {
       .onError(IO.println)
       .handleError(_ => default)
 
+  private def getContributorsPerRepo(
+    client: Client[IO],
+    repoName: RepoName,
+    orgName: String,
+    contributors: Vector[Contributor] = Vector.empty[Contributor],
+    page: Int = 1,
+    isEmpty: Boolean = false,
+  )(using token: Token): IO[Vector[Contributor]] =
+    if ((page > 1 && contributors.size % 100 != 0) || isEmpty) IO.pure(contributors)
+    else {
+      uri(contributorsUrl(repoName.value, orgName, page))
+        .flatMap { contributorUri =>
+          for {
+            newContributors <- fetch[Vector[Contributor]](contributorUri, client, Vector.empty)
+            next <- getContributorsPerRepo(
+              client = client,
+              repoName = repoName,
+              orgName = orgName,
+              contributors = contributors ++ newContributors,
+              page = page + 1,
+              isEmpty = newContributors.isEmpty,
+            )
+          } yield next
+        }
+    }
+
   def routes(client: Client[IO], token: Token): HttpRoutes[IO] = {
     given tk: Token = token
 
@@ -80,29 +106,7 @@ object Main extends IOApp.Simple {
               .flatMap(fetch[Vector[RepoName]](_, client, Vector.empty[RepoName]))
           }
           contributors <- repositories
-            .parUnorderedFlatTraverse { repoName =>
-              def getContributors(
-                page: Int,
-                contributors: Vector[Contributor],
-                isEmpty: Boolean = false,
-              ): IO[Vector[Contributor]] =
-                if ((page > 1 && contributors.size % 100 != 0) || isEmpty) IO.pure(contributors)
-                else {
-                  uri(contributorsUrl(repoName.value, orgName, page))
-                    .flatMap { contributorUri =>
-                      for {
-                        newContributors <- fetch[Vector[Contributor]](contributorUri, client, Vector.empty)
-                        next <- getContributors(
-                          page = page + 1,
-                          contributors = contributors ++ newContributors,
-                          isEmpty = newContributors.isEmpty,
-                        )
-                      } yield next
-                    }
-                }
-
-              getContributors(page = 1, contributors = Vector.empty)
-            }
+            .parUnorderedFlatTraverse(getContributorsPerRepo(client, _, orgName))
             .map {
               _.groupMapReduce(_.login)(_.contributions)(_ + _).toVector
                 .map(Contributor(_, _))

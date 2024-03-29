@@ -65,7 +65,7 @@ object Main extends IOApp.Simple {
       .onError {
         case org.http4s.client.UnexpectedStatus(Status.Unauthorized, _, _) =>
           error"GitHub token is either expired or absent, please check `token` key in src/main/resources/application.conf"
-        case other => error"other"
+        case other => error"$other"
       }
       .handleErrorWith(_ => warn"returning default value: $default for $uri due to unexpected error" as default)
 

@@ -1,3 +1,5 @@
+Blog version: https://blog.rockthejvm.com/cats-effect-parallelism/
+
 Some people say that functional programming is slow. This app demonstrates that they are bulshitting.
 
 Parallelism is a piece of cake when programs are expressions which can be composed and manipulated like normal strings and integers.

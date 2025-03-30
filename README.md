@@ -3,7 +3,7 @@ Video demo: https://www.youtube.com/watch?v=fPmFuC7H12E
 Blog version: https://blog.rockthejvm.com/cats-effect-parallelism/
 
 Frontend:
-[MyImage!](assets/frontend.png)
+![MyImage](assets/frontend.png)
 
 Some people say that functional programming is slow. This app demonstrates that they are bulshitting.
 

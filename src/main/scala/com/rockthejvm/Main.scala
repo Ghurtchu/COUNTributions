@@ -73,7 +73,7 @@ object Main extends IOApp.Simple {
 
   def uri(url: String): IO[Uri] = IO.fromEither(Uri.fromString(url))
 
-  def fetch[A](uri: Uri, client: Client[IO], default: => A)(using token: Token, reads: Reads[A]): IO[A] =
+  def fetch[A: Reads](uri: Uri, client: Client[IO], default: => A)(using token: Token): IO[A] =
     client
       .expect[String](req(uri))
       .map(_.into[A])
@@ -120,6 +120,7 @@ object Main extends IOApp.Simple {
         StaticFile
           .fromPath(Path("src/main/resources/index.html"), Some(request))
           .getOrElseF(NotFound())
+      case GET -> Root / "health" => Ok("I am alive!")
       case GET -> Root / "org" / orgName =>
         for {
           cachedValue <- cache.getOpt(orgName)

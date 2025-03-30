@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Organization Contributors</title>
+    <style>
+        /* General Styles */
+        body {
+          font-family: "Arial", sans-serif;
+          background-color: #f4f4f9;
+          text-align: center;
+          padding: 20px;
+          color: #333;
+        }
+
+        h1 {
+          color: #2c3e50;
+          font-size: 28px;
+        }
+
+        /* Form Section */
+        #org-form {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 20px;
+          gap: 10px;
+        }
+
+        .input-container {
+          position: relative;
+        }
+
+        #org-name {
+          padding: 12px;
+          font-size: 16px;
+          width: 250px;
+          border: 2px solid #3498db;
+          border-radius: 5px;
+          outline: none;
+        }
+
+        #org-name:focus {
+          border-color: #2c3e50;
+        }
+
+        /* Input Clear Button */
+        .clear-btn {
+          position: absolute;
+          right: 10px;
+          top: 50%;
+          transform: translateY(-50%);
+          background: none;
+          border: none;
+          cursor: pointer;
+          font-size: 18px;
+          color: #777;
+          display: none;
+        }
+
+        .clear-btn:hover {
+          color: #333;
+        }
+
+        /* Buttons */
+        button {
+          padding: 12px 16px;
+          font-size: 16px;
+          border: none;
+          cursor: pointer;
+          border-radius: 5px;
+          transition: background 0.3s ease-in-out;
+        }
+
+        #submit-btn {
+          background-color: #3498db;
+          color: white;
+        }
+
+        #submit-btn:hover {
+          background-color: #217dbb;
+        }
+
+        #clear-btn {
+          background-color: #e74c3c;
+          color: white;
+          margin-left: auto;
+        }
+
+        #clear-btn:hover {
+          background-color: #c0392b;
+        }
+
+        /* Table Container - Full Width */
+        .table-container {
+          position: relative;
+          width: 100%;
+          max-width: 95vw;
+          margin: 20px auto;
+        }
+
+        /* Loading Spinner */
+        .loading-overlay {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          display: none;
+          z-index: 10;
+        }
+
+        .spinner {
+          width: 40px;
+          height: 40px;
+          border: 4px solid rgba(0, 0, 0, 0.1);
+          border-top: 4px solid #3498db;
+          border-radius: 50%;
+          animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+
+        /* Table Styles */
+        #contributors-table {
+          width: 100%;
+          border-collapse: collapse;
+          background: white;
+          box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+          border-radius: 8px;
+          overflow: hidden;
+          border: 2px solid #ddd; /* Added subtle border around the table */
+        }
+
+        #contributors-table th,
+        #contributors-table td {
+          padding: 12px;
+          text-align: left;
+          border-bottom: 1px solid #ddd; /* Bottom border */
+          border-right: 1px solid #ddd; /* Column dividers */
+        }
+
+        #contributors-table th:last-child,
+        #contributors-table td:last-child {
+          border-right: none; /* Remove right border for last column */
+        }
+
+        #contributors-table th {
+          background-color: #3498db;
+          color: white;
+        }
+
+        #contributors-table tbody tr:nth-child(even) {
+          background-color: #f9f9f9;
+        }
+
+        #contributors-table tbody tr:hover {
+          background-color: #ecf0f1;
+        }
+
+        /* Keep Table Height Fixed */
+        #contributors-body {
+          display: block;
+          max-height: 400px;
+          overflow-y: auto;
+          width: 100%;
+        }
+
+        #contributors-table thead,
+        tbody tr {
+          display: table;
+          width: 100%;
+          table-layout: fixed;
+        }
+
+        /* Placeholder to Keep Table Height */
+        .loading-placeholder {
+          visibility: hidden;
+        }
+
+        /* Links */
+        a {
+          color: #3498db;
+          text-decoration: none;
+          font-weight: bold;
+        }
+
+        a:hover {
+          text-decoration: underline;
+        }
+
+        /* Stats Section */
+        .stats {
+          margin-top: 30px;
+          font-size: 18px;
+          font-weight: bold;
+          color: #2c3e50;
+          display: flex;
+          justify-content: center;
+          gap: 30px;
+        }
+
+        .stat-box {
+          background-color: #3498db;
+          color: white;
+          border-radius: 10px;
+          padding: 20px 30px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          width: 200px;
+        }
+
+        .stat-box p {
+          margin: 0;
+          font-size: 20px;
+          text-align: center;
+        }
+
+        /* Search Input */
+        #search-input {
+          padding: 8px;
+          font-size: 16px;
+          width: 250px;
+          border: 2px solid #3498db;
+          border-radius: 5px;
+          outline: none;
+          margin-bottom: 20px;
+        }
+
+        #search-input:focus {
+          border-color: #2c3e50;
+        }
+
+        /* Request Time Display */
+        #request-time {
+          margin-top: 20px;
+          font-size: 18px;
+          font-weight: bold;
+          color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+<h1>COUNTributions!</h1>
+
+<div id="org-form">
+    <div class="input-container">
+        <input
+                type="text"
+                id="org-name"
+                placeholder="Enter organization name"
+                oninput="toggleClearButton()"
+        />
+        <button class="clear-btn" onclick="clearInput()">✖</button>
+    </div>
+    <button id="submit-btn">Submit</button>
+    <div id="request-time"></div>
+    <button id="clear-btn">Clear</button>
+</div>
+
+<!-- Filter input, now centered -->
+<input
+        type="text"
+        id="search-input"
+        placeholder="Filter by name"
+        oninput="filterTable()"
+/>
+
+<div class="table-container">
+    <div class="loading-overlay" id="loading">
+        <div class="spinner"></div>
+    </div>
+    <table id="contributors-table">
+        <thead>
+        <tr>
+            <th>Contributor</th>
+            <th>Contributions</th>
+        </tr>
+        </thead>
+        <tbody id="contributors-body">
+        <!-- Default 8 empty rows -->
+        </tbody>
+    </table>
+</div>
+
+<div class="stats">
+    <div class="stat-box">
+        <p>Total Contributors</p>
+        <p id="total-contributors">0</p>
+    </div>
+    <div class="stat-box">
+        <p>Total Contributions</p>
+        <p id="total-contributions">0</p>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+      populateEmptyRows(); // Populate empty rows on load
+    });
+
+    async function fetchContributors() {
+      const orgName = document.getElementById("org-name").value.trim();
+      if (!orgName) {
+        alert("Please enter an organization name.");
+        return;
+      }
+
+      const startTime = Date.now(); // Capture start time
+
+      document.getElementById("loading").style.display = "block";
+
+      try {
+        const response = await fetch(`http://localhost:9000/org/${orgName}`);
+        const data = await response.json();
+
+        const endTime = Date.now(); // Capture end time
+        const requestTime = endTime - startTime; // Calculate the time difference
+
+        document.getElementById("loading").style.display = "none";
+        document.getElementById(
+          "request-time"
+        ).textContent = `latency: ${requestTime} ms`;
+
+        if (data.count === 0) {
+          alert("No contributors found.");
+          populateEmptyRows();
+          return;
+        }
+
+        populateTable(data.contributors);
+      } catch (error) {
+        const endTime = Date.now();
+        const requestTime = endTime - startTime;
+        document.getElementById("loading").style.display = "none";
+        document.getElementById(
+          "request-time"
+        ).textContent = `latency: ${requestTime} ms`;
+        alert("An error occurred while fetching the data.");
+        populateEmptyRows();
+      }
+    }
+
+    function populateTable(contributors) {
+      const contributorsBody = document.getElementById("contributors-body");
+      contributorsBody.innerHTML = "";
+
+      let totalContributions = 0;
+
+      contributors.forEach((contributor) => {
+        totalContributions += contributor.contributions;
+        const row = document.createElement("tr");
+        row.setAttribute("data-name", contributor.login.toLowerCase()); // Set data attribute for filtering
+        row.innerHTML = `
+        <td><a href="https://github.com/${contributor.login}" target="_blank">${contributor.login}</a></td>
+        <td>${contributor.contributions}</td>
+      `;
+        contributorsBody.appendChild(row);
+      });
+
+      document.getElementById("total-contributors").textContent =
+        contributors.length;
+      document.getElementById("total-contributions").textContent =
+        totalContributions;
+
+      if (contributors.length < 8) {
+        addEmptyRows(8 - contributors.length);
+      }
+    }
+
+    function populateEmptyRows() {
+      const contributorsBody = document.getElementById("contributors-body");
+      contributorsBody.innerHTML = "";
+      addEmptyRows(8);
+      document.getElementById("total-contributors").textContent = "0";
+      document.getElementById("total-contributions").textContent = "0";
+    }
+
+    function addEmptyRows(count) {
+      for (let i = 0; i < count; i++) {
+        const row = document.createElement("tr");
+        row.innerHTML = `<td class="loading-placeholder"> - </td><td class="loading-placeholder"> - </td>`;
+        document.getElementById("contributors-body").appendChild(row);
+      }
+    }
+
+    function clearInput() {
+      document.getElementById("org-name").value = "";
+      toggleClearButton();
+    }
+
+    function toggleClearButton() {
+      document.querySelector(".clear-btn").style.display =
+        document.getElementById("org-name").value ? "block" : "none";
+    }
+
+    function filterTable() {
+      const searchQuery = document
+        .getElementById("search-input")
+        .value.toLowerCase();
+      const rows = document.querySelectorAll("#contributors-body tr");
+
+      rows.forEach((row) => {
+        const contributorName = row.getAttribute("data-name");
+        if (contributorName.includes(searchQuery)) {
+          row.style.display = "";
+        } else {
+          row.style.display = "none";
+        }
+      });
+    }
+
+    document
+      .getElementById("submit-btn")
+      .addEventListener("click", fetchContributors);
+    document
+      .getElementById("clear-btn")
+      .addEventListener("click", populateEmptyRows);
+</script>
+</body>
+</html>

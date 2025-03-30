@@ -2,7 +2,7 @@ package com.rockthejvm
 
 import org.http4s.Header.Raw
 import org.http4s.client.Client
-import org.http4s.{EntityDecoder, Header, HttpRoutes, Method, ParseFailure, Request, Response, Status, Uri}
+import org.http4s.{EntityDecoder, Header, HttpRoutes, Method, ParseFailure, Request, Response, StaticFile, Status, Uri}
 import org.typelevel.ci.CIString
 import com.rockthejvm.Main.syntax.*
 import com.rockthejvm.Main.domain.*
@@ -10,6 +10,9 @@ import pureconfig.*
 import pureconfig.generic.derivation.default.*
 import org.http4s.ember.client.EmberClientBuilder
 import org.http4s.dsl.*
+import org.http4s.*
+import org.http4s.dsl.io.*
+import fs2.io.file.Path
 import cats.syntax.all.*
 import cats.instances.all.*
 import play.api.libs.json.*
@@ -23,6 +26,9 @@ import org.typelevel.log4cats.slf4j.Slf4jLogger
 import org.typelevel.log4cats.syntax.LoggerInterpolator
 import com.comcast.ip4s.*
 import com.rockthejvm.Main.getContributorsPerRepo
+import org.http4s.server.middleware.CORS
+
+import scala.concurrent.Future
 
 object Main extends IOApp.Simple {
 
@@ -41,7 +47,7 @@ object Main extends IOApp.Simple {
         .default[IO]
         .withHost(host"localhost")
         .withPort(port"9000")
-        .withHttpApp(routes(client, token).orNotFound)
+        .withHttpApp(CORS(routes(client, token)).orNotFound)
         .build
     } yield ()).useForever
 
@@ -101,7 +107,10 @@ object Main extends IOApp.Simple {
     given tk: Token = token
 
     HttpRoutes.of[IO] {
-      case GET -> Root => Ok("hi :)")
+      case request @ GET -> Root =>
+        StaticFile
+          .fromPath(Path("src/main/resources/index.html"), Some(request))
+          .getOrElseF(NotFound())
       case GET -> Root / "org" / orgName =>
         for {
           start <- IO.realTime

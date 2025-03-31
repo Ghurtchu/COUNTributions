@@ -11,12 +11,13 @@ object caching {
 
   final case class Cache(underlying: Ref[IO, State], cacheExpiration: Long) {
     def put(key: Key, value: Value): IO[Unit] =
-      underlying.update(_.updatedWith(key)(_ => Some(value)))
+      underlying.update(_.updated(key, value))
 
     def clear(now: Instant): IO[Unit] =
       underlying.update {
         _.filter { case (_, cached) =>
-          java.time.temporal.ChronoUnit.MILLIS.between(cached.timestamp, now) <= cacheExpiration
+          java.time.temporal.ChronoUnit.MILLIS
+            .between(cached.timestamp, now) <= cacheExpiration
         }
       }
 

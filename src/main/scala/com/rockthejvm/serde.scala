@@ -6,7 +6,7 @@ import play.api.libs.json.*
 import play.api.libs.*
 import Reads.{IntReads, StringReads}
 
-object parsing {
+object serde {
   given ReadsPublicRepos: Reads[PublicRepos] =
     (__ \ "public_repos").read[Int].map(PublicRepos.apply)
 

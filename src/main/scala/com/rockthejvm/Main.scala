@@ -3,8 +3,8 @@ package com.rockthejvm
 import caching.*
 import config.*
 import domain.*
-import parsing.syntax.*
-import parsing.given
+import serde.syntax.*
+import serde.given
 import org.http4s.Header.Raw
 import org.http4s.client.Client
 import org.http4s.{EntityDecoder, Header, HttpRoutes, Method, ParseFailure, Request, Response, StaticFile, Status, Uri}
@@ -48,17 +48,20 @@ object Main extends IOApp.Simple {
       client <- EmberClientBuilder.default[IO].build
       _ <- EmberServerBuilder
         .default[IO]
-        .withHost(host"localhost")
-        .withPort(port"9000")
+        .withHost(appConfig.serverConfig.host)
+        .withPort(appConfig.serverConfig.port)
         .withHttpApp(CORS(routes(cache, client, appConfig.token)).orNotFound)
         .build
-      _ <- (for {
-        _ <- IO.sleep(appConfig.cacheExpirationInMillis.millis)
-        _ <- info"running cache cleanup..."
-        now <- IO.realTimeInstant
-        _ <- cache.clear(now)
-      } yield ()).foreverM.background
+      _ <- cleanCachePeriodically(cache, appConfig.cacheExpirationInMillis.millis)
     } yield ()).useForever
+
+  def cleanCachePeriodically(cache: Cache, cacheExpiration: FiniteDuration): Resource[IO, Unit] =
+    (for {
+      _ <- IO.sleep(cacheExpiration)
+      _ <- info"running cache cleanup..."
+      now <- IO.realTimeInstant
+      _ <- cache.clear(now)
+    } yield ()).foreverM.background.void
 
   def publicRepos(orgName: String) = s"https://api.github.com/orgs/$orgName"
 

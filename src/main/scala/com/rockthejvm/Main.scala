@@ -3,6 +3,7 @@ package com.rockthejvm
 import caching.*
 import config.*
 import domain.*
+import uris.*
 import serde.syntax.*
 import serde.given
 import org.http4s.Header.Raw
@@ -46,16 +47,19 @@ object Main extends IOApp.Simple {
       appConfig <- IO.delay(ConfigSource.default.loadOrThrow[AppConfig]).toResource
       cache <- Cache.make(appConfig.cacheExpirationInMillis)
       client <- EmberClientBuilder.default[IO].build
-      _ <- EmberServerBuilder
-        .default[IO]
-        .withHost(appConfig.serverConfig.host)
-        .withPort(appConfig.serverConfig.port)
-        .withHttpApp(CORS(routes(cache, client, appConfig.token)).orNotFound)
-        .build
+      _ <- startServer(appConfig, cache, client)
       _ <- cleanCachePeriodically(cache, appConfig.cacheExpirationInMillis.millis)
     } yield ()).useForever
 
-  def cleanCachePeriodically(cache: Cache, cacheExpiration: FiniteDuration): Resource[IO, Unit] =
+  private def startServer(appConfig: AppConfig, cache: Cache, client: Client[IO]) =
+    EmberServerBuilder
+      .default[IO]
+      .withHost(appConfig.serverConfig.host)
+      .withPort(appConfig.serverConfig.port)
+      .withHttpApp(CORS(routes(cache, client, appConfig.token)).orNotFound)
+      .build
+
+  private def cleanCachePeriodically(cache: Cache, cacheExpiration: FiniteDuration): Resource[IO, Unit] =
     (for {
       _ <- IO.sleep(cacheExpiration)
       _ <- info"running cache cleanup..."
@@ -63,22 +67,12 @@ object Main extends IOApp.Simple {
       _ <- cache.clear(now)
     } yield ()).foreverM.background.void
 
-  def publicRepos(orgName: String) = s"https://api.github.com/orgs/$orgName"
-
-  def contributorsUrl(repoName: String, orgName: String, page: Int): String =
-    s"https://api.github.com/repos/$orgName/$repoName/contributors?per_page=100&page=$page"
-
-  def repos(orgName: String, page: Int): String =
-    s"https://api.github.com/orgs/$orgName/repos?per_page=100&page=$page"
-
-  def req(uri: Uri)(using token: Token) = Request[IO](Method.GET, uri)
-    .putHeaders(Raw(CIString("Authorization"), s"Bearer $token"))
-
-  def uri(url: String): IO[Uri] = IO.fromEither(Uri.fromString(url))
-
-  def fetch[A: Reads](uri: Uri, client: Client[IO], default: => A)(using token: Token): IO[A] =
+  private def fetch[A: Reads](uri: Uri, client: Client[IO], default: => A)(using token: Token): IO[A] =
     client
-      .expect[String](req(uri))
+      .expect[String] {
+        Request[IO](Method.GET, uri)
+          .putHeaders(Raw(CIString("Authorization"), s"Bearer $token"))
+      }
       .map(_.into[A])
       .onError {
         case org.http4s.client.UnexpectedStatus(Status.Unauthorized, _, _) =>
@@ -97,7 +91,7 @@ object Main extends IOApp.Simple {
   )(using token: Token): IO[Vector[Contributor]] =
     if ((page > 1 && contributors.size % 100 != 0) || isEmpty) IO.pure(contributors)
     else {
-      uri(contributorsUrl(repoName.value, orgName, page))
+      uri(uris.contributors(repoName.value, orgName, page))
         .flatMap { contributorUri =>
           for {
             _ <- info"requesting page: $page of $repoName contributors"
@@ -115,7 +109,7 @@ object Main extends IOApp.Simple {
         }
     }
 
-  def routes(cache: Cache, client: Client[IO], token: Token): HttpRoutes[IO] = {
+  private def routes(cache: Cache, client: Client[IO], token: Token): HttpRoutes[IO] = {
     given tk: Token = token
 
     HttpRoutes.of[IO] {

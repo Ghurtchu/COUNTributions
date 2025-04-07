@@ -1,6 +1,6 @@
 Video demo: https://www.youtube.com/watch?v=fPmFuC7H12E
 
-Blog version: https://blog.rockthejvm.com/cats-effect-parallelism/
+Blog version: [https://blog.rockthejvm.com/cats-effect-parallelism/](https://rockthejvm.com/articles/functional-parallel-programming-with-scala-and-cats-effect)
 
 Frontend:
 ![MyImage](assets/frontend.png)

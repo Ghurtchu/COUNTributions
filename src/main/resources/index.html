@@ -45,7 +45,6 @@
           border-color: #2c3e50;
         }
 
-        /* Input Clear Button */
         .clear-btn {
           position: absolute;
           right: 10px;
@@ -63,7 +62,6 @@
           color: #333;
         }
 
-        /* Buttons */
         button {
           padding: 12px 16px;
           font-size: 16px;
@@ -78,7 +76,12 @@
           color: white;
         }
 
-        #submit-btn:hover {
+        #submit-btn:disabled {
+          background-color: #95c5e5;
+          cursor: not-allowed;
+        }
+
+        #submit-btn:hover:enabled {
           background-color: #217dbb;
         }
 
@@ -92,7 +95,6 @@
           background-color: #c0392b;
         }
 
-        /* Table Container - Full Width */
         .table-container {
           position: relative;
           width: 100%;
@@ -100,7 +102,6 @@
           margin: 20px auto;
         }
 
-        /* Loading Spinner */
         .loading-overlay {
           position: absolute;
           top: 50%;
@@ -128,7 +129,6 @@
           }
         }
 
-        /* Table Styles */
         #contributors-table {
           width: 100%;
           border-collapse: collapse;
@@ -136,20 +136,20 @@
           box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
           border-radius: 8px;
           overflow: hidden;
-          border: 2px solid #ddd; /* Added subtle border around the table */
+          border: 2px solid #ddd;
         }
 
         #contributors-table th,
         #contributors-table td {
           padding: 12px;
           text-align: left;
-          border-bottom: 1px solid #ddd; /* Bottom border */
-          border-right: 1px solid #ddd; /* Column dividers */
+          border-bottom: 1px solid #ddd;
+          border-right: 1px solid #ddd;
         }
 
         #contributors-table th:last-child,
         #contributors-table td:last-child {
-          border-right: none; /* Remove right border for last column */
+          border-right: none;
         }
 
         #contributors-table th {
@@ -165,7 +165,6 @@
           background-color: #ecf0f1;
         }
 
-        /* Keep Table Height Fixed */
         #contributors-body {
           display: block;
           max-height: 400px;
@@ -180,12 +179,10 @@
           table-layout: fixed;
         }
 
-        /* Placeholder to Keep Table Height */
         .loading-placeholder {
           visibility: hidden;
         }
 
-        /* Links */
         a {
           color: #3498db;
           text-decoration: none;
@@ -196,7 +193,6 @@
           text-decoration: underline;
         }
 
-        /* Stats Section */
         .stats {
           margin-top: 30px;
           font-size: 18px;
@@ -222,7 +218,6 @@
           text-align: center;
         }
 
-        /* Search Input */
         #search-input {
           padding: 8px;
           font-size: 16px;
@@ -237,7 +232,6 @@
           border-color: #2c3e50;
         }
 
-        /* Request Time Display */
         #request-time {
           margin-top: 20px;
           font-size: 18px;
@@ -264,7 +258,6 @@
     <button id="clear-btn">Clear</button>
 </div>
 
-<!-- Filter input, now centered -->
 <input
         type="text"
         id="search-input"
@@ -284,7 +277,6 @@
         </tr>
         </thead>
         <tbody id="contributors-body">
-        <!-- Default 8 empty rows -->
         </tbody>
     </table>
 </div>
@@ -302,48 +294,51 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", () => {
-      populateEmptyRows(); // Populate empty rows on load
+      populateEmptyRows();
     });
 
     async function fetchContributors() {
       const orgName = document.getElementById("org-name").value.trim();
+      const submitBtn = document.getElementById("submit-btn");
+
       if (!orgName) {
         alert("Please enter an organization name.");
         return;
       }
 
-      const startTime = Date.now(); // Capture start time
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Loading...";
 
+      const startTime = Date.now();
       document.getElementById("loading").style.display = "block";
 
       try {
         const response = await fetch(`http://localhost:9000/org/${orgName}`);
         const data = await response.json();
 
-        const endTime = Date.now(); // Capture end time
-        const requestTime = endTime - startTime; // Calculate the time difference
+        const endTime = Date.now();
+        const requestTime = endTime - startTime;
 
         document.getElementById("loading").style.display = "none";
-        document.getElementById(
-          "request-time"
-        ).textContent = `latency: ${requestTime} ms`;
+        document.getElementById("request-time").textContent = `latency: ${requestTime} ms`;
 
         if (data.count === 0) {
           alert("No contributors found.");
           populateEmptyRows();
-          return;
+        } else {
+          populateTable(data.contributors);
         }
-
-        populateTable(data.contributors);
       } catch (error) {
         const endTime = Date.now();
         const requestTime = endTime - startTime;
+
         document.getElementById("loading").style.display = "none";
-        document.getElementById(
-          "request-time"
-        ).textContent = `latency: ${requestTime} ms`;
+        document.getElementById("request-time").textContent = `latency: ${requestTime} ms`;
         alert("An error occurred while fetching the data.");
         populateEmptyRows();
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Submit";
       }
     }
 
@@ -356,11 +351,11 @@
       contributors.forEach((contributor) => {
         totalContributions += contributor.contributions;
         const row = document.createElement("tr");
-        row.setAttribute("data-name", contributor.login.toLowerCase()); // Set data attribute for filtering
+        row.setAttribute("data-name", contributor.login.toLowerCase());
         row.innerHTML = `
-        <td><a href="https://github.com/${contributor.login}" target="_blank">${contributor.login}</a></td>
-        <td>${contributor.contributions}</td>
-      `;
+          <td><a href="https://github.com/${contributor.login}" target="_blank">${contributor.login}</a></td>
+          <td>${contributor.contributions}</td>
+        `;
         contributorsBody.appendChild(row);
       });
 
@@ -407,7 +402,7 @@
       const rows = document.querySelectorAll("#contributors-body tr");
 
       rows.forEach((row) => {
-        const contributorName = row.getAttribute("data-name");
+        const contributorName = row.getAttribute("data-name") || "";
         if (contributorName.includes(searchQuery)) {
           row.style.display = "";
         } else {

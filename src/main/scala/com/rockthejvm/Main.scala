@@ -124,7 +124,7 @@ object Main extends IOApp.Simple {
           response <- cachedValue match {
             case Some(cached) =>
               for {
-                response <- Ok(cached.contributions.toJson)
+                response <- Ok(cached.contributions)
                 _ <- info"returning cached contributions for $orgName"
               } yield response
             case None =>
@@ -156,11 +156,11 @@ object Main extends IOApp.Simple {
                       .sortWith(_.contributions > _.contributions)
                   }
                 _ <- info"returning aggregated & sorted contributors for $orgName"
-                contributions = Contributions(contributors.size, contributors)
+                contributions = Contributions(contributors.size, contributors).toJson
                 now <- IO.realTimeInstant
                 _ <- info"caching contributions for $orgName"
                 _ <- cache.put(orgName, Value(now, contributions)).start
-                response <- Ok(contributions.toJson)
+                response <- Ok(contributions)
                 end <- IO.realTime
                 _ <- info"aggregation took ${(end - start).toSeconds} seconds"
               } yield response

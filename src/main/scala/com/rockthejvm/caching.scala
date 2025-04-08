@@ -17,7 +17,7 @@ object caching {
       underlying.update {
         _.filter { case (_, cached) =>
           java.time.temporal.ChronoUnit.MILLIS
-            .between(cached.timestamp, now) <= cacheExpiration
+            .between(cached.cachedAt, now) <= cacheExpiration
         }
       }
 
@@ -28,10 +28,11 @@ object caching {
   object Cache {
 
     type Key = String
+    type Json = String
 
     final case class Value(
-      timestamp: Instant,
-      contributions: Contributions,
+      cachedAt: Instant,
+      contributions: Json, // cached as String to avoid additional serialization
     )
 
     type State = Map[Key, Value]

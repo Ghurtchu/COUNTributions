@@ -2,30 +2,51 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Organization Contributors</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>COUNTributions ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
-        /* General Styles */
+        :root {
+          --accent: #00c6ff;
+          --accent-dark: #0072ff;
+          --danger: #ff4b5c;
+          --glass-bg: rgba(255, 255, 255, 0.15);
+          --glass-blur: blur(12px);
+          --text: #ffffff;
+        }
+
+        * {
+          box-sizing: border-box;
+        }
+
         body {
-          font-family: "Arial", sans-serif;
-          background-color: #f4f4f9;
-          text-align: center;
-          padding: 20px;
-          color: #333;
+          font-family: 'Outfit', sans-serif;
+          background: linear-gradient(135deg, #667eea, #764ba2);
+          color: var(--text);
+          margin: 0;
+          padding: 2rem;
+          min-height: 100vh;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
         }
 
         h1 {
-          color: #2c3e50;
-          font-size: 28px;
+          font-size: 3rem;
+          margin-bottom: 1rem;
+          letter-spacing: 1px;
+          background: linear-gradient(to right, #ffffff, #a6c0fe);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
         }
 
-        /* Form Section */
         #org-form {
           display: flex;
+          gap: 10px;
           align-items: center;
           justify-content: center;
-          margin-bottom: 20px;
-          gap: 10px;
+          flex-wrap: wrap;
+          margin-bottom: 2rem;
         }
 
         .input-container {
@@ -33,73 +54,135 @@
         }
 
         #org-name {
-          padding: 12px;
+          padding: 12px 16px;
           font-size: 16px;
-          width: 250px;
-          border: 2px solid #3498db;
-          border-radius: 5px;
+          width: 260px;
+          border: none;
+          border-radius: 12px;
+          background: var(--glass-bg);
+          backdrop-filter: var(--glass-blur);
+          color: var(--text);
           outline: none;
-        }
-
-        #org-name:focus {
-          border-color: #2c3e50;
+          box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
         }
 
         .clear-btn {
           position: absolute;
-          right: 10px;
+          right: 12px;
           top: 50%;
           transform: translateY(-50%);
           background: none;
           border: none;
-          cursor: pointer;
+          color: var(--text);
           font-size: 18px;
-          color: #777;
+          cursor: pointer;
           display: none;
         }
 
         .clear-btn:hover {
-          color: #333;
+          color: #ffffff;
         }
 
         button {
-          padding: 12px 16px;
+          padding: 12px 18px;
           font-size: 16px;
           border: none;
+          border-radius: 12px;
           cursor: pointer;
-          border-radius: 5px;
-          transition: background 0.3s ease-in-out;
+          font-weight: 600;
+          transition: all 0.3s ease;
         }
 
         #submit-btn {
-          background-color: #3498db;
+          background: linear-gradient(to right, var(--accent), var(--accent-dark));
           color: white;
-        }
-
-        #submit-btn:disabled {
-          background-color: #95c5e5;
-          cursor: not-allowed;
         }
 
         #submit-btn:hover:enabled {
-          background-color: #217dbb;
+          transform: translateY(-2px);
+          box-shadow: 0 6px 18px rgba(0, 198, 255, 0.3);
+        }
+
+        #submit-btn:disabled {
+          background: #95c5e5;
+          cursor: not-allowed;
         }
 
         #clear-btn {
-          background-color: #e74c3c;
+          background: var(--danger);
           color: white;
-          margin-left: auto;
         }
 
         #clear-btn:hover {
-          background-color: #c0392b;
+          background: #c0392b;
+        }
+
+        #export-btn {
+          background: #00c6ff;
+          color: white;
+        }
+
+        #export-btn:hover {
+          background: #0092cc;
+        }
+
+        #search-input {
+          padding: 10px 14px;
+          font-size: 16px;
+          width: 260px;
+          border-radius: 10px;
+          border: none;
+          margin-bottom: 20px;
+          background: var(--glass-bg);
+          backdrop-filter: var(--glass-blur);
+          color: white;
         }
 
         .table-container {
-          position: relative;
           width: 100%;
-          max-width: 95vw;
-          margin: 20px auto;
+          max-width: 960px;
+          background: var(--glass-bg);
+          backdrop-filter: var(--glass-blur);
+          border-radius: 16px;
+          padding: 1rem;
+          box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+          position: relative;
+          max-height: 400px;
+          overflow-y: auto;
+        }
+
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          color: white;
+        }
+
+        th, td {
+          padding: 16px;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          text-align: left;
+        }
+
+        th {
+          background: rgba(0, 198, 255, 0.25);
+          color: white;
+        }
+
+        tr:nth-child(even) {
+          background: rgba(255, 255, 255, 0.05);
+        }
+
+        tr:hover {
+          background: rgba(255, 255, 255, 0.1);
+        }
+
+        a {
+          color: #00c6ff;
+          text-decoration: none;
+        }
+
+        a:hover {
+          text-decoration: underline;
         }
 
         .loading-overlay {
@@ -112,163 +195,71 @@
         }
 
         .spinner {
-          width: 40px;
-          height: 40px;
-          border: 4px solid rgba(0, 0, 0, 0.1);
-          border-top: 4px solid #3498db;
+          width: 48px;
+          height: 48px;
+          border: 4px solid rgba(255, 255, 255, 0.3);
+          border-top: 4px solid white;
           border-radius: 50%;
           animation: spin 1s linear infinite;
         }
 
         @keyframes spin {
-          0% {
-            transform: rotate(0deg);
-          }
-          100% {
+          to {
             transform: rotate(360deg);
           }
         }
 
-        #contributors-table {
-          width: 100%;
-          border-collapse: collapse;
-          background: white;
-          box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-          border-radius: 8px;
-          overflow: hidden;
-          border: 2px solid #ddd;
-        }
-
-        #contributors-table th,
-        #contributors-table td {
-          padding: 12px;
-          text-align: left;
-          border-bottom: 1px solid #ddd;
-          border-right: 1px solid #ddd;
-        }
-
-        #contributors-table th:last-child,
-        #contributors-table td:last-child {
-          border-right: none;
-        }
-
-        #contributors-table th {
-          background-color: #3498db;
-          color: white;
-        }
-
-        #contributors-table tbody tr:nth-child(even) {
-          background-color: #f9f9f9;
-        }
-
-        #contributors-table tbody tr:hover {
-          background-color: #ecf0f1;
-        }
-
-        #contributors-body {
-          display: block;
-          max-height: 400px;
-          overflow-y: auto;
-          width: 100%;
-        }
-
-        #contributors-table thead,
-        tbody tr {
-          display: table;
-          width: 100%;
-          table-layout: fixed;
-        }
-
-        .loading-placeholder {
-          visibility: hidden;
-        }
-
-        a {
-          color: #3498db;
-          text-decoration: none;
-          font-weight: bold;
-        }
-
-        a:hover {
-          text-decoration: underline;
-        }
-
         .stats {
-          margin-top: 30px;
-          font-size: 18px;
-          font-weight: bold;
-          color: #2c3e50;
           display: flex;
+          gap: 20px;
+          margin-top: 2rem;
+          flex-wrap: wrap;
           justify-content: center;
-          gap: 30px;
         }
 
         .stat-box {
-          background-color: #3498db;
-          color: white;
-          border-radius: 10px;
+          background: var(--glass-bg);
+          backdrop-filter: var(--glass-blur);
           padding: 20px 30px;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-          width: 200px;
-        }
-
-        .stat-box p {
-          margin: 0;
-          font-size: 20px;
+          border-radius: 16px;
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
           text-align: center;
         }
 
-        #search-input {
-          padding: 8px;
-          font-size: 16px;
-          width: 250px;
-          border: 2px solid #3498db;
-          border-radius: 5px;
-          outline: none;
-          margin-bottom: 20px;
-        }
-
-        #search-input:focus {
-          border-color: #2c3e50;
+        .stat-box p {
+          margin: 6px 0;
+          font-size: 20px;
         }
 
         #request-time {
-          margin-top: 20px;
-          font-size: 18px;
-          font-weight: bold;
-          color: #2c3e50;
+          font-size: 16px;
+          margin-top: 1rem;
+          font-weight: 300;
+          color: #ffffff;
+        }
+
+        .loading-placeholder {
+          color: rgba(255, 255, 255, 0.2);
         }
     </style>
 </head>
 <body>
-<h1>COUNTributions!</h1>
+<h1>COUNTributions! 🚀</h1>
 
 <div id="org-form">
     <div class="input-container">
-        <input
-                type="text"
-                id="org-name"
-                placeholder="Enter organization name"
-                oninput="toggleClearButton()"
-        />
+        <input id="org-name" placeholder="Enter organization name" oninput="toggleClearButton()" />
         <button class="clear-btn" onclick="clearInput()">✖</button>
     </div>
     <button id="submit-btn">Submit</button>
-    <div id="request-time"></div>
     <button id="clear-btn">Clear</button>
+    <button id="export-btn" style="display:none;">Export CSV</button>
 </div>
 
-<input
-        type="text"
-        id="search-input"
-        placeholder="Filter by name"
-        oninput="filterTable()"
-/>
+<input id="search-input" placeholder="Filter by name" oninput="filterTable()" />
 
 <div class="table-container">
-    <div class="loading-overlay" id="loading">
-        <div class="spinner"></div>
-    </div>
+    <div class="loading-overlay" id="loading"><div class="spinner"></div></div>
     <table id="contributors-table">
         <thead>
         <tr>
@@ -276,8 +267,7 @@
             <th>Contributions</th>
         </tr>
         </thead>
-        <tbody id="contributors-body">
-        </tbody>
+        <tbody id="contributors-body"></tbody>
     </table>
 </div>
 
@@ -291,6 +281,8 @@
         <p id="total-contributions">0</p>
     </div>
 </div>
+
+<div id="request-time"></div>
 
 <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -308,19 +300,16 @@
 
       submitBtn.disabled = true;
       submitBtn.textContent = "Loading...";
-
       const startTime = Date.now();
       document.getElementById("loading").style.display = "block";
 
       try {
         const response = await fetch(`http://localhost:9000/org/${orgName}`);
         const data = await response.json();
-
-        const endTime = Date.now();
-        const requestTime = endTime - startTime;
+        const requestTime = Date.now() - startTime;
 
         document.getElementById("loading").style.display = "none";
-        document.getElementById("request-time").textContent = `latency: ${requestTime} ms`;
+        document.getElementById("request-time").textContent = `Latency: ${requestTime} ms`;
 
         if (data.count === 0) {
           alert("No contributors found.");
@@ -329,11 +318,9 @@
           populateTable(data.contributors);
         }
       } catch (error) {
-        const endTime = Date.now();
-        const requestTime = endTime - startTime;
-
+        const requestTime = Date.now() - startTime;
         document.getElementById("loading").style.display = "none";
-        document.getElementById("request-time").textContent = `latency: ${requestTime} ms`;
+        document.getElementById("request-time").textContent = `Latency: ${requestTime} ms`;
         alert("An error occurred while fetching the data.");
         populateEmptyRows();
       } finally {
@@ -343,45 +330,44 @@
     }
 
     function populateTable(contributors) {
-      const contributorsBody = document.getElementById("contributors-body");
-      contributorsBody.innerHTML = "";
-
+      const body = document.getElementById("contributors-body");
+      body.innerHTML = "";
       let totalContributions = 0;
 
-      contributors.forEach((contributor) => {
-        totalContributions += contributor.contributions;
+      contributors.forEach((c) => {
+        totalContributions += c.contributions;
         const row = document.createElement("tr");
-        row.setAttribute("data-name", contributor.login.toLowerCase());
+        row.setAttribute("data-name", c.login.toLowerCase());
         row.innerHTML = `
-          <td><a href="https://github.com/${contributor.login}" target="_blank">${contributor.login}</a></td>
-          <td>${contributor.contributions}</td>
+          <td><a href="https://github.com/${c.login}" target="_blank">${c.login}</a></td>
+          <td>${c.contributions}</td>
         `;
-        contributorsBody.appendChild(row);
+        body.appendChild(row);
       });
 
-      document.getElementById("total-contributors").textContent =
-        contributors.length;
-      document.getElementById("total-contributions").textContent =
-        totalContributions;
+      document.getElementById("total-contributors").textContent = contributors.length;
+      document.getElementById("total-contributions").textContent = totalContributions;
 
-      if (contributors.length < 8) {
-        addEmptyRows(8 - contributors.length);
-      }
+      if (contributors.length < 8) addEmptyRows(8 - contributors.length);
+
+      document.getElementById("export-btn").style.display = "inline-block";
     }
 
     function populateEmptyRows() {
-      const contributorsBody = document.getElementById("contributors-body");
-      contributorsBody.innerHTML = "";
+      const body = document.getElementById("contributors-body");
+      body.innerHTML = "";
       addEmptyRows(8);
       document.getElementById("total-contributors").textContent = "0";
       document.getElementById("total-contributions").textContent = "0";
+      document.getElementById("export-btn").style.display = "none";
     }
 
     function addEmptyRows(count) {
+      const body = document.getElementById("contributors-body");
       for (let i = 0; i < count; i++) {
         const row = document.createElement("tr");
-        row.innerHTML = `<td class="loading-placeholder"> - </td><td class="loading-placeholder"> - </td>`;
-        document.getElementById("contributors-body").appendChild(row);
+        row.innerHTML = `<td class="loading-placeholder">-</td><td class="loading-placeholder">-</td>`;
+        body.appendChild(row);
       }
     }
 
@@ -396,27 +382,42 @@
     }
 
     function filterTable() {
-      const searchQuery = document
-        .getElementById("search-input")
-        .value.toLowerCase();
+      const searchQuery = document.getElementById("search-input").value.toLowerCase();
       const rows = document.querySelectorAll("#contributors-body tr");
 
       rows.forEach((row) => {
-        const contributorName = row.getAttribute("data-name") || "";
-        if (contributorName.includes(searchQuery)) {
-          row.style.display = "";
-        } else {
-          row.style.display = "none";
-        }
+        const name = row.getAttribute("data-name") || "";
+        row.style.display = name.includes(searchQuery) ? "" : "none";
       });
     }
 
-    document
-      .getElementById("submit-btn")
-      .addEventListener("click", fetchContributors);
-    document
-      .getElementById("clear-btn")
-      .addEventListener("click", populateEmptyRows);
+    function exportToCSV() {
+      const rows = document.querySelectorAll("#contributors-body tr");
+      if (rows.length === 0) return;
+
+      let csvContent = "data:text/csv;charset=utf-8,Contributor,Contributions\n";
+
+      rows.forEach(row => {
+        const cells = row.querySelectorAll("td");
+        if (cells.length === 2 && !cells[0].classList.contains("loading-placeholder")) {
+          const name = cells[0].innerText.trim();
+          const contributions = cells[1].innerText.trim();
+          csvContent += `${name},${contributions}\n`;
+        }
+      });
+
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", "contributors.csv");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    document.getElementById("submit-btn").addEventListener("click", fetchContributors);
+    document.getElementById("clear-btn").addEventListener("click", populateEmptyRows);
+    document.getElementById("export-btn").addEventListener("click", exportToCSV);
 </script>
 </body>
 </html>

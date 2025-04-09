@@ -19,7 +19,13 @@ object domain {
 
   extension (repoName: RepoName) def value: String = repoName
 
-  final case class Contributor(login: String, contributions: Long)
+  final case class Contributor(
+    login: String,
+    contributions: Long,
+  )
 
-  final case class Contributions(count: Long, contributors: Vector[Contributor])
+  final case class Contributions(
+    count: Long,
+    contributors: Vector[Contributor],
+  )
 }

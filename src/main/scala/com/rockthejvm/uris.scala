@@ -14,5 +14,6 @@ object uris {
   def repos(orgName: String, page: Int): String =
     s"https://api.github.com/orgs/$orgName/repos?per_page=100&page=$page"
 
-  def uri(url: String): IO[Uri] = IO.fromEither(Uri.fromString(url))
+  def uri(url: String): IO[Uri] =
+    IO.fromEither(Uri.fromString(url))
 }

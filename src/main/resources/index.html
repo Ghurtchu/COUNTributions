@@ -392,28 +392,37 @@
     }
 
     function exportToCSV() {
-      const rows = document.querySelectorAll("#contributors-body tr");
-      if (rows.length === 0) return;
+          const orgName = document.getElementById("org-name").value.trim();
+          const rows = document.querySelectorAll("#contributors-body tr");
+          if (rows.length === 0) return;
 
-      let csvContent = "data:text/csv;charset=utf-8,Contributor,Contributions\n";
+          const now = new Date();
+          const date = now.toISOString().split("T")[0]; // YYYY-MM-DD
+          const time = now.toTimeString().split(" ")[0].replace(/:/g, "-"); // HH-MM-SS
 
-      rows.forEach(row => {
-        const cells = row.querySelectorAll("td");
-        if (cells.length === 2 && !cells[0].classList.contains("loading-placeholder")) {
-          const name = cells[0].innerText.trim();
-          const contributions = cells[1].innerText.trim();
-          csvContent += `${name},${contributions}\n`;
-        }
-      });
+          let csvContent = `Organization: ${orgName}\nGenerated on: ${date} ${time}\n\nContributor,Contributions\n`;
 
-      const encodedUri = encodeURI(csvContent);
-      const link = document.createElement("a");
-      link.setAttribute("href", encodedUri);
-      link.setAttribute("download", "contributors.csv");
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
+          rows.forEach(row => {
+            const cells = row.querySelectorAll("td");
+            if (cells.length === 2 && !cells[0].classList.contains("loading-placeholder")) {
+              const name = cells[0].innerText.trim();
+              const contributions = cells[1].innerText.trim();
+              csvContent += `${name},${contributions}\n`;
+            }
+          });
+
+          const encodedUri = encodeURI("data:text/csv;charset=utf-8," + csvContent);
+          const link = document.createElement("a");
+          const safeOrg = orgName || "unknown";
+          const filename = `contributors_${safeOrg}_${date}_${time}.csv`;
+          link.setAttribute("href", encodedUri);
+          link.setAttribute("download", filename);
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+  }
+
+
 
     document.getElementById("submit-btn").addEventListener("click", fetchContributors);
     document.getElementById("clear-btn").addEventListener("click", populateEmptyRows);
